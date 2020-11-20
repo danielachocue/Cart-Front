@@ -1,0 +1,110 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;  
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #0066cc;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 20px;
+  background-color: #0066cc;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+    display: block;
+
+}
+ul li a:hover{
+    background-color:  #00264d;
+}
+.item-r{
+    float: right;
+}
+
+h2{
+    color: white;
+    text-align: left;
+    text-decoration: solid;
+    text-transform: capitalize;
+    margin-left:20px;
+    margin-top: 10px;
+    margin-block-end:10px;
+
+}
+
+.loggin-box{
+    width: 320px;
+    height: 420px;
+    background: #666666;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.loggin-box h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 22px;
+}
+
+.loggin-box label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+.loggin-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loggin-box input[type="email"],
+.loggin-box input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.loggin-box button{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 30px;
+    background: #0066cc;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.loggin-box button:hover{
+    background-color:  #00264d;
+}

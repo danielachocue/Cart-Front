@@ -1,0 +1,20 @@
+<div *ngIf="showMsg">
+    <p *ngFor="let msg of mensajes">
+        {{msg}}
+    </p>
+</div>
+<div>
+    <form #paymenMethodForm="ngForm">
+        <input type="text" name="enable" id="enable" #enable placeholder="Enable" [(ngModel)]="paymenMethod.enable"> <br/>
+        <input type="text" name="name" id="name" #name placeholder="Name" [(ngModel)]="paymenMethod.name"> <br/>
+
+        <select name="enable" id="enable" #enable [(ngModel)]="paymenMethod.enable">
+            <option *ngFor="let enable of enables" [value]="enable.id">
+                {{enable.name}}
+            </option>
+        </select>
+        <br/>
+        <button (click)="save()">Save</button>
+        <button routerLink="/paymenmethod-list">Cancel</button>
+    </form>
+</div>

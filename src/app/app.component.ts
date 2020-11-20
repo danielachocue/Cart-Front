@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cart-front';
+  title = 'cart-Front';
+
+  public isAuth():boolean{
+    return !!localStorage.getItem('usuario');
+  }
+  
+
 }
+
+
