@@ -1,19 +1,56 @@
-<h3>{{title}}</h3>
+<!DOCTYPE html>
+<html lang="en">
 
-<table border="l">
-    <tr>
-        <td>ProId</td>
-        <td>Name</td>
-        <td>Price</td>
-        <td>Opciones</td>
-    </tr>
-    <tr *ngFor="let product of products">
-        <td>{{product.proId}}</td>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>
-            <a [routerLink]="['/product-edit',product.proId]">Editar</a>
-            <button (click)="delete(product.proId)">Borrar</button>
-        </td>
-    </tr>
-</table>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="product-list.component.css">
+  <title>Products</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+       <li class="item-r">
+        <a routerLink="/paymenmethod-list">PaymenMethod List</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/product-list">Productos</a>
+      </li>
+
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+  <h3>{{title}}</h3>
+  <div *ngIf="showMsg">
+    <p *ngFor="let msg of mensajes">
+      {{msg}}
+    </p>
+  </div>
+  <div id="main-container">
+    <table id="tabla">
+      <thead>
+        <tr>
+          <th>ProId</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Editar</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let product of products">
+        <th>{{product.proId}}</th>
+        <th>{{product.name}}</th>
+        <th>{{product.price}}</th>
+        <th>
+          <button [routerLink]="['/product-edit',product.proId]">Editar</button>
+        </th>
+        <th>
+          <button (click)="delete(product.proId)">Borrar</button>
+        </th>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

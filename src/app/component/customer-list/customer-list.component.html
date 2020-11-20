@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="customer-list.component.css">
   <title>Customers</title>
 </head>
-<i class="fas fa-trash-alt"></i>
+
 <body>
   <nav>
     <ul>
+       <li class="item-r">
+        <a routerLink="/paymenmethod-list">PaymenMethod List</a>
+      </li>
       <li class="item-r">
         <a routerLink="/product-list">Productos</a>
       </li>
-      <li class="item-r">
-        <a routerLink="/paymenmethod-list">PaymenMethod List</a>
-      </li>
+
       <h2>Cart Front</h2>
     </ul>
-  </nav><br/>
+  </nav><br />
   <h3>{{titulo}}</h3>
   <div *ngIf="showMsg">
     <p *ngFor="let msg of mensajes">
-        {{msg}}
+      {{msg}}
     </p>
   </div>
   <div id="main-container">
-    <table id="tabla" >
+    <table id="tabla">
       <thead>
         <tr>
           <th>Email</th>
@@ -35,18 +37,19 @@
           <th>Borrar</th>
         </tr>
       </thead>
-        <tr *ngFor="let customer of customers">
-          <th>{{customer.email}}</th>
-          <th>{{customer.name}}</th>
-          <th>
-            <button [routerLink]="['/customer-edit',customer.email]">Editar</button>
-          </th>
-          <th>
-            <button (click)="delete(customer.email)">Borrar</button>
-          </th>
-        </tr>
+      <tr *ngFor="let customer of customers">
+        <th>{{customer.email}}</th>
+        <th>{{customer.name}}</th>
+        <th>
+          <button [routerLink]="['/customer-edit',customer.email]">Editar</button>
+        </th>
+        <th>
+          <button (click)="delete(customer.email)">Borrar</button>
+        </th>
+      </tr>
     </table>
   </div>
 </body>
+
 </html>
 

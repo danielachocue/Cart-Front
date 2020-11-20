@@ -11,8 +11,6 @@ export class CustomerService {
 
   private url:string=environment.apiUrl+'api/customer/';
 
-
-
   constructor(public httpClient:HttpClient) {}
 
   createTokenHeader():HttpHeaders{
