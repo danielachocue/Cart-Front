@@ -33,7 +33,7 @@ export class CustomerListComponent implements OnInit {
     this.mensajes = [""];
     this.customerService.delete(email).subscribe(ok => {
       this.showMsg = true;
-      this.mensajes[0] = "El customer se borro con exito"+email;
+      this.mensajes[0] = "El customer "+email+ " se borro con exito";
       this.findAll();
     }, err => {
       console.log(err)

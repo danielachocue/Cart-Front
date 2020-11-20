@@ -3,12 +3,40 @@ body{
     margin: 0px;
     padding: 0px;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background: #0066cc;
+}
+
+
+li {
+    float: right;
+    margin-right: 40px;
+}
+  
+li a {
+    display: block;
+    padding: 20px;
+    background-color: #0066cc;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+    display: block;
+
+}
+ul li a:hover{
+    background-color:  #00264d;
 }
 
 h3{
@@ -27,6 +55,13 @@ h2{
     margin-top: 10px;
     margin-block-end:10px;
   
+}
+
+p{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px  
 }
 
 #main-container{
