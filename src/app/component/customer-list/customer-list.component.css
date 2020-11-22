@@ -10,6 +10,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background: #0066cc;
+    align-content: center;
 }
 
 
@@ -78,12 +79,16 @@ table{
 
 th, td{ 
     padding: 20px;
+    text-align: center;
+    align-content: center;
 }
 
 thead{
     background-color: #0066cc;
     border-bottom: solid 5px #004080;
     color: white;
+    text-align: center;
+    align-content: center;
 }
 
 tr:nth-child(even){

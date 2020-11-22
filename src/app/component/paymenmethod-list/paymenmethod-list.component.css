@@ -1,0 +1,115 @@
+body{
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #0066cc;
+    align-content: center;
+}
+
+
+li {
+    float: right;
+}
+  
+li a {
+    display: block;
+    padding: 20px;
+    background-color: #0066cc;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+    display: block;
+
+}
+ul li a:hover{
+    background-color:  #00264d;
+}
+
+h3{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 22px;
+}
+  
+h2{
+    color: white;
+    text-align: left;
+    text-decoration: solid;
+    text-transform: capitalize;
+    margin-left:20px;
+    margin-top: 10px;
+    margin-block-end:10px;
+  
+}
+
+p{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px  
+}
+
+#main-container{
+    margin: 150px auto;
+    width: 600px;
+}
+
+table{
+    margin-top: -20%;
+    background-color: white;
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td{ 
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+}
+
+thead{
+    background-color: #0066cc;
+    border-bottom: solid 5px #004080;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+tr:nth-child(even){
+    background-color: #ddd
+}
+
+tr:hover th{
+    background-color: #004d99 ;
+    color: white;
+}
+button{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 30px;
+    background: #0066cc;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color:  #80bfff;
+}

@@ -32,4 +32,5 @@ export class LoginComponent implements OnInit {
       this.messages=["Usuario o clave no son validos"];
     });
   }
+
 }

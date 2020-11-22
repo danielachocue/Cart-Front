@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/domain/customer';
 import { CustomerService } from 'src/app/service/customer.service';
+import { AuthService } from 'src/app/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -15,7 +17,7 @@ export class CustomerListComponent implements OnInit {
   public showMsg: boolean = false;
   public mensajes: string[] = [""];
 
-  constructor(public customerService:CustomerService) { }
+  constructor(public customerService:CustomerService, private router:Router,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -41,6 +43,10 @@ export class CustomerListComponent implements OnInit {
       this.mensajes = err.error.error;
 
     });
+  }
+  public salir():void{
+    this.authService.logOut();
+    this.router.navigate(['login']);
   }
 
 }

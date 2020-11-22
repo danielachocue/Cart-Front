@@ -10,7 +10,8 @@
 <body>
     <nav>
         <ul>
-          <li class="item-r"><a href="#">Customer</a>
+          <li class="item-r">
+            <a routerLink="/customer-list">Customer List</a>
           </li>
           <h2>Cart Front</h2>
         </ul>
@@ -33,7 +34,7 @@
                 <input type="text" name="address" id="address" #address placeholder="Address" [(ngModel)]="customer.address"/> <br/>
                 <h3>Telefono</h3>
                 <input type="text" name="phone" id="phone" #email placeholder="Phone" [(ngModel)]="customer.phone"/> <br/>
-                <h3>Cpntraseña</h3>
+                <h3>Contraseña</h3>
                 <input type="text" name="token" id="token" #email placeholder="Token" [(ngModel)]="customer.token"/> <br/>
                 <h3>Enable</h3>
                 <select name="enable" id="enable" [(ngModel)]="customer.enable">

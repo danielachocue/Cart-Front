@@ -1,17 +1,49 @@
-<h3>{{title}}</h3>
-
-<table border="l">
-    <tr>
-        <td>PayId</td>
-        <td>Name</td>
-        <td>Opciones</td>
-    </tr>
-    <tr *ngFor="let paymentMethod of paymentMethods">
-        <td>{{paymentMethod.payId}}</td>
-        <td>{{paymentMethod.name}}</td>
-        <td>
-            <a [routerLink]="['/paymenmethod-edit',paymentMethod.payId]">Editar</a>
-            <button (click)="delete(paymentMethod.payId)">Borrar</button>
-        </td>
-    </tr>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="paymenmethod-list.component.css">
+    <title>Payment Method Lis</title>
+</head>
+<body>
+    <nav>
+        <ul>
+           <li class="item-r">
+            <a routerLink="/product-list">Product List</a>
+          </li>
+          <li class="item-r">
+            <a routerLink="/customer-list">Customer List</a>
+          </li> 
+          <h2>Cart Front</h2>
+        </ul>
+      </nav><br />
+      <div *ngIf="showMsg">
+        <p *ngFor="let msg of mensajes">
+          {{msg}}
+        </p>
+      </div>
+      <div id="main-container">
+        <table id="tabla">
+          <thead>
+            <tr>
+                <th>PayId</th>
+                <th>Name</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let paymentMethod of paymentMethods">
+            <th>{{paymentMethod.payId}}</th>
+            <th>{{paymentMethod.name}}</th>
+            <th>
+              <button [routerLink]="['/paymenmethod-edit',paymentMethod.payId]">Editar</button>
+            </th>
+            <th>
+              <button (click)="delete(paymentMethod.payId)">Borrar</button>
+            </th>
+          </tr>
+        </table>
+      </div>
+</body>
+</html>

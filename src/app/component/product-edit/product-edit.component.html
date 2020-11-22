@@ -1,18 +1,41 @@
-<div *ngIf="product">
-
-    <div *ngIf="showMsg">
-        <p *ngFor="let msg of mensajes">
-            {{msg}}
-        </p>
-    </div>
-    <div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="product-edit.component.css">
+    <title>Product Edit</title>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li class="item-r">
+            <a routerLink="/product-list">Product List</a>
+          </li>
+          <h2>Cart Front</h2>
+        </ul>
+      </nav><br/>
+      <div class="editForm">
+        <h1>Editar Producto</h1>
+        <div *ngIf="product">
+            <div *ngIf="showMsg">
+                <p *ngFor="let msg of mensajes">
+                    {{msg}}
+                </p>
+            </div>
+        </div>
         <form #productForm="ngForm">
+            <h3>Id</h3>
             <input readonly type="proId" name="proId" id="proId" #proId placeholder="ProId" [(ngModel)]="product.proId"/> <br/>
+            <h3>Detalle</h3>
             <input type="text" name="detail" id="detail" #detail placeholder="Detail" [(ngModel)]="product.detail"/> <br/>
+            <h3>Imagen</h3>
             <input type="text" name="image" id="image" #image placeholder="Image" [(ngModel)]="product.image"/> <br/>
+            <h3>Nombre</h3>
             <input type="text" name="name" id="name" #name placeholder="Name" [(ngModel)]="product.name"/> <br/>
+            <h3>Precio</h3>
             <input type="number" name="price" id="price" #price placeholder="Price" [(ngModel)]="product.price"/> <br/>
-    
+            <h3>Enable</h3>
             <select name="enable" id="enable" [(ngModel)]="product.enable">
                 <option *ngFor="let enable of enables" [value]="enable.id">
                     {{enable.name}}
@@ -20,7 +43,8 @@
             </select>
             <br/>
             <button (click)="update()">Edit</button>
-            <button (click)="delete()">Delete</button>
             <button routerLink="/product-list">Cancel</button>
         </form>
-    </div>
+    </div> 
+</body>
+</html>

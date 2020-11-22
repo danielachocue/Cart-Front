@@ -10,6 +10,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background: #0066cc;
+    align-content: center;
 }
 
 
@@ -78,6 +79,8 @@ table{
 
 th, td{ 
     padding: 20px;
+    text-align: center;
+    align-content: center;
 }
 
 thead{
@@ -85,6 +88,7 @@ thead{
     border-bottom: solid 5px #004080;
     width: 100%;
     color: white;
+    text-align: center;
 }
 
 tr:nth-child(even){
@@ -109,4 +113,3 @@ button{
 button:hover{
     background-color:  #80bfff;
 }
-

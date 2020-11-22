@@ -15,7 +15,7 @@
         <a routerLink="/paymenmethod-list">PaymenMethod List</a>
       </li>
       <li class="item-r">
-        <a routerLink="/product-list">Productos</a>
+        <a routerLink="/customer-list">Customer List</a>
       </li>
 
       <h2>Cart Front</h2>
@@ -34,6 +34,7 @@
           <th>ProId</th>
           <th>Name</th>
           <th>Price</th>
+          <th>Imagen</th>
           <th>Editar</th>
           <th>Borrar</th>
         </tr>
@@ -42,6 +43,7 @@
         <th>{{product.proId}}</th>
         <th>{{product.name}}</th>
         <th>{{product.price}}</th>
+        <th>{{product.image}}</th>
         <th>
           <button [routerLink]="['/product-edit',product.proId]">Editar</button>
         </th>
