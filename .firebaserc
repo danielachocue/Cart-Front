@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cart-dchocuec": {
+      "hosting": {
+        "cart-front": [
+          "cart-dchocuec"
+        ]
+      }
+    }
+  }
+}
