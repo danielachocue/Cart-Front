@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ok } from 'assert';
 import { Customer } from 'src/app/domain/customer';
 import { Enable } from 'src/app/domain/enable';
+import { AuthService } from 'src/app/service/auth.service';
 import { CustomerService } from 'src/app/service/customer.service';
 import { EnableService } from 'src/app/service/enable.service';
 
@@ -20,10 +20,10 @@ export class CustomerSaveComponent implements OnInit {
 
   //inyeccion de dependencia
   constructor(public customerService: CustomerService,
-    public enableService: EnableService) { }
+    public enableService: EnableService, public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.customer = new Customer("", "", "Y", "", "", "");
+    this.customer = new Customer("", "", "Y", "", "", "", "A");
     this.findAllEnable();
   }
 

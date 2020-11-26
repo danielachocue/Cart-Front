@@ -10,12 +10,19 @@ import { PaymenmethodSaveComponent } from './component/paymenmethod-save/paymenm
 import { ProductEditComponent } from './component/product-edit/product-edit.component';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { ProductSaveComponent } from './component/product-save/product-save.component';
-import { AuthGuard } from './guard/auth.guard';
+
+import {AngularFireAuthGuard,redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+//import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+
+const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
 
 const routes: Routes = [
-  {path:'customer-list',component:CustomerListComponent,canActivate:[AuthGuard]},
-  {path:'customer-save',component:CustomerSaveComponent,canActivate:[AuthGuard]},
-  {path:'customer-edit/:email',component:CustomerEditComponent,canActivate:[AuthGuard]},
+  {path:'customer-list',component:CustomerListComponent,canActivate:[AngularFireAuthGuard],
+  data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'customer-save',component:CustomerSaveComponent,canActivate:[AngularFireAuthGuard],
+  data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'customer-edit/:email',component:CustomerEditComponent,canActivate:[AngularFireAuthGuard],
+  data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'product-list',component:ProductListComponent},
   {path:'product-save',component:ProductSaveComponent},
   {path:'product-edit/:proId',component:ProductEditComponent},

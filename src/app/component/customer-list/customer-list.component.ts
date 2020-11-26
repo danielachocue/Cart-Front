@@ -46,7 +46,7 @@ export class CustomerListComponent implements OnInit {
   }
   public salir():void{
     this.authService.logOut();
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
   }
 
 }
