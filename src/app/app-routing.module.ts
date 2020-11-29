@@ -12,25 +12,27 @@ import { ProductListComponent } from './component/product-list/product-list.comp
 import { ProductSaveComponent } from './component/product-save/product-save.component';
 
 import {AngularFireAuthGuard,redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+import { AuthGuard } from './guard/auth.guard';
+import { AdminguardGuard } from './guard/adminguard.guard';
+import { LogGuardGuard } from './guard/log-guard.guard';
+import { EmailComponent } from './component/email/email.component';
 //import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
 
 const routes: Routes = [
-  {path:'customer-list',component:CustomerListComponent,canActivate:[AngularFireAuthGuard],
-  data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'customer-save',component:CustomerSaveComponent,canActivate:[AngularFireAuthGuard],
-  data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'customer-edit/:email',component:CustomerEditComponent,canActivate:[AngularFireAuthGuard],
-  data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'product-list',component:ProductListComponent},
-  {path:'product-save',component:ProductSaveComponent},
-  {path:'product-edit/:proId',component:ProductEditComponent},
-  {path:'paymenmethod-list',component:PaymenmethodListComponent},
-  {path:'paymenmethod-save',component:PaymenmethodSaveComponent},
-  {path:'paymenmethod-edit/:payId',component:PaymenmethodEditComponent},
-  {path: 'login',component:LoginComponent},
-  {path: '',component:LoginComponent}
+  {path:'customer-list',component:CustomerListComponent,canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'customer-save',component:CustomerSaveComponent,canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'customer-edit/:email',component:CustomerEditComponent,canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'product-list',component:ProductListComponent, canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'product-save',component:ProductSaveComponent, canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'product-edit/:proId',component:ProductEditComponent, canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'paymenmethod-list',component:PaymenmethodListComponent, canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'paymenmethod-save',component:PaymenmethodSaveComponent, canActivate:[AuthGuard,AdminguardGuard]},
+  {path:'paymenmethod-edit/:payId',component:PaymenmethodEditComponent, canActivate:[AuthGuard,AdminguardGuard]},
+  {path: 'login',component:LoginComponent, canActivate: [AuthGuard, LogGuardGuard]},
+  {path: '',component:LoginComponent},
+  { path:'**',pathMatch:'full',redirectTo:'login'}
 ];
 
 @NgModule({

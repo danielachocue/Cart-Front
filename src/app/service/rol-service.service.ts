@@ -10,7 +10,7 @@ export class RoleService {
   constructor() {
     this.roles = [
       { id: 'A', name: 'Admin' },
-      { id: 'U', name: 'User' }
+      { id: 'C', name: 'User' }
     ];
   }
 

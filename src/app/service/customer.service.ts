@@ -9,39 +9,41 @@ import { Customer } from '../domain/customer';
 })
 export class CustomerService {
 
-  private url:string=environment.apiUrl+'api/customer/';
-
-  constructor(public httpClient:HttpClient) {}
-
+  //coloco la ruta del servicio a partir  del api colocado en el archivo enviroment
+  private url:string=environment.apiUrl+"api/customer/";
+  private headers;
+  //inyecto http
+  constructor(public httpClient:HttpClient) {
+    this.headers=this.createTokenHeader();
+  }
+  //coloco el token como header
   createTokenHeader():HttpHeaders{
+    //obtengo el token
     let token=localStorage.getItem('token');
-    let headers=new HttpHeaders({'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDU1NzkyODcsImlzcyI6Imh0dHBzOi8vemF0aHVyYWNvZGUub3JnIiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MDY0NDMyODd9.680UtsxSTWfaQXmm3TdfvmnWOe9B29I4a3m9_ASOQc8'});
-    return headers
+    //mando el token con la key definida en el back
+    let headers= new HttpHeaders({'Authorization':token});
+    return headers;
   }
-
   public findAll():Observable<any>{
-    let headers=this.createTokenHeader();
-    return this.httpClient.get(this.url+'findAll', {headers:headers});
+    return this.httpClient.get(this.url+'findAll',{headers:this.headers});
+  }
+  public findById(email:string):Observable<any>{
+    return this.httpClient.get(this.url+'findById/'+email,{headers:this.headers});
   }
 
-  public findById(email:string):Observable<any>{
-    let headers=this.createTokenHeader();
-    return this.httpClient.get(this.url+'findById/'+email, {headers:headers});
+  public findByIdWithHeaders(email:string):Observable<any>{
+    this.headers=this.createTokenHeader();
+    return this.httpClient.get(this.url+'findById/'+email,{headers:this.headers});
   }
 
   public save(customer:Customer):Observable<any>{
-    let headers=this.createTokenHeader();
-    return this.httpClient.post(this.url+'save',customer, {headers:headers});
+    return this.httpClient.post(this.url+'save',customer,{headers:this.headers});
   }
-
   public update(customer:Customer):Observable<any>{
-    let headers=this.createTokenHeader();
-    return this.httpClient.put(this.url+'update',customer, {headers:headers});
+    return this.httpClient.put(this.url+'update',customer,{headers:this.headers});
   }
-
   public delete(email:string):Observable<any>{
-    let headers=this.createTokenHeader();
-    return this.httpClient.delete(this.url+'delete/'+email, {headers:headers});
+    return this.httpClient.delete(this.url+'delete/'+email,{headers:this.headers});
   }
-
 }
+

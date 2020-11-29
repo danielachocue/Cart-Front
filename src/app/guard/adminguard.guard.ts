@@ -5,19 +5,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteguardGuard implements CanActivate {
+export class AdminguardGuard implements CanActivate {
 
-  constructor(public router: Router){}
+  constructor(public router:Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (localStorage.getItem("rol") == 'C') {
+      
+      if (localStorage.getItem("rol") == 'A') {
         return true;
       } else {
-        this.router.navigate(['./home']);
+        this.router.navigate(['/home-admin']);
         return false;
-    } 
-  
-  }
+      }
+    }
 }

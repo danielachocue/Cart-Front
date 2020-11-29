@@ -20,6 +20,7 @@ import { LoginComponent } from './component/login/login.component';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { EmailComponent } from './component/email/email.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { environment } from 'src/environments/environment';
     ProductEditComponent,
     PaymenmethodSaveComponent,
     PaymenmethodEditComponent,
-    LoginComponent
+    LoginComponent,
+    EmailComponent,
   ],
   imports: [
     BrowserModule,
