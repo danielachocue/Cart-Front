@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   //traigo la clase User
   public user: User;
   public userToken: User;
+  public customer:Customer;
   //inyecto el auth service
   constructor(private router: Router, private authService: AuthService, private customerService: CustomerService) { }
   ngOnInit(): void {
@@ -44,15 +45,17 @@ export class LoginComponent implements OnInit {
         this.userToken.password = data.user.uid;
         //se obtienen el token
         this.authService.loginUser(this.userToken).subscribe(token => {
-          //guarda la informacion del usuario en el local storage
           localStorage.setItem("usuario", JSON.stringify(this.user));
-          //coloco el token en el localstorage
           localStorage.setItem("token", token.token);
 
-          //revisa el tipo de usuario
-          this.customerService.findByIdWithHeaders(this.user.username).subscribe(userInfo => {
-            localStorage.setItem("usuarioInfo", JSON.stringify(userInfo));
-            if(userInfo.role=="A"){
+          this.customerService.findById(this.user.username).subscribe(userInfo => {
+            
+            this.customer=userInfo;
+
+            localStorage.setItem("usuarioInfo",JSON.stringify(userInfo))
+            localStorage.setItem("rol",this.customer.role);
+            
+            if(this.customer.role=="A"){
               this.router.navigate(['/customer-list']);
             }else{
               this.router.navigate(['/product-list']);
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
           });
 
         }, err => {
-          alert("Usuario o Contraseña incorrectos");
+          alert("No se encuentra el token o usuarios y contraseña incorrectos");
         });
       }
 

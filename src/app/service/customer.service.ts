@@ -8,22 +8,19 @@ import { Customer } from '../domain/customer';
   providedIn: 'root'
 })
 export class CustomerService {
-
-  //coloco la ruta del servicio a partir  del api colocado en el archivo enviroment
+  
   private url:string=environment.apiUrl+"api/customer/";
   private headers;
-  //inyecto http
   constructor(public httpClient:HttpClient) {
     this.headers=this.createTokenHeader();
   }
-  //coloco el token como header
+
   createTokenHeader():HttpHeaders{
-    //obtengo el token
     let token=localStorage.getItem('token');
-    //mando el token con la key definida en el back
     let headers= new HttpHeaders({'Authorization':token});
     return headers;
   }
+
   public findAll():Observable<any>{
     return this.httpClient.get(this.url+'findAll',{headers:this.headers});
   }
