@@ -10,7 +10,7 @@
   <nav>
     <ul>
       <li class="item-r"><a href="#">Log Out</a></li>
-      <li class="item-r"><a href="#">Registrar</a></li>
+      <li class="item-r"><a routerLink="/customer-save">Registrar</a></li>
       <h2>Cart Front</h2>
     </ul>
   </nav><br/>
@@ -33,6 +33,7 @@
              [(ngModel)]="user.password"/><br/>
     
       <button (click)="ingresar()">Ingresar</button><br/><br/>
+      <a routerLink="/customer-save">No tienes cuenta?</a>
 
     </form>
   </div>

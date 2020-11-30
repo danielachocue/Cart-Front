@@ -14,7 +14,15 @@ export class AuthService {
    //inicializo el url a login
    private url:string=environment.apiUrl+'login'
    //inyecto el httpClient
-   constructor(public httpClient:HttpClient, public angularFireAuth:AngularFireAuth) {}
+   constructor(public httpClient:HttpClient, public angularFireAuth:AngularFireAuth) {
+     this.angularFireAuth.authState.subscribe(user=>{
+       if(user){
+         localStorage.setItem('user',JSON.stringify(user));
+       }else{
+         localStorage.removeItem('user');
+       }
+     })
+   }
  
    //loginBack
    public loginUser(user:User):Observable<any>{

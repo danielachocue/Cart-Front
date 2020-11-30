@@ -9,7 +9,6 @@ import { usuariomodel } from 'src/app/modelos/usariomodel';
 import { AuthService } from 'src/app/service/auth.service';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { CustomerService } from 'src/app/service/customer.service';
-import { AuthFirebaseService } from 'src/app/service/firbase-service.service';
 
 @Component({
   selector: 'app-login',
@@ -35,26 +34,25 @@ export class LoginComponent implements OnInit {
     this.authService.loginFireBase(this.user)
     .then((data) => {
 
-      console.log(data.user.uid);
       if (data.user.emailVerified == false) {
         alert("Email no verificado");
         this.authService.sendEmailVerification();
       } else {
-        alert("Sección iniciada exictosamente");
-        //creo una copia del user para que el token no aparezca en el front
+        alert("Sección iniciada exito");
+        //se crea la copia del token
         this.userToken.username = this.user.username;
         this.userToken.password = data.user.uid;
-        //obtengo el token
+        //se obtienen el token
         this.authService.loginUser(this.userToken).subscribe(token => {
-          //guardo la informacion del usuario en el local storage
-          localStorage.setItem("usuario", JSON.stringify(this.userToken));
+          //guarda la informacion del usuario en el local storage
+          localStorage.setItem("usuario", JSON.stringify(this.user));
           //coloco el token en el localstorage
           localStorage.setItem("token", token.token);
 
-          //reviso el tipo de usuario
-          this.customerService.findByIdWithHeaders(this.userToken.username).subscribe(userInfo => {
+          //revisa el tipo de usuario
+          this.customerService.findByIdWithHeaders(this.user.username).subscribe(userInfo => {
             localStorage.setItem("usuarioInfo", JSON.stringify(userInfo));
-            if(userInfo.customerType==1){
+            if(userInfo.role=="A"){
               this.router.navigate(['/customer-list']);
             }else{
               this.router.navigate(['/product-list']);
@@ -64,9 +62,7 @@ export class LoginComponent implements OnInit {
             alert("usuario no encontrado en el back "+e.message);
           });
 
-
         }, err => {
-          console.log("error");
           alert("Usuario o Contraseña incorrectos");
         });
       }

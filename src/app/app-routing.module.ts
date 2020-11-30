@@ -15,22 +15,21 @@ import {AngularFireAuthGuard,redirectUnauthorizedTo} from '@angular/fire/auth-gu
 import { AuthGuard } from './guard/auth.guard';
 import { AdminguardGuard } from './guard/adminguard.guard';
 import { LogGuardGuard } from './guard/log-guard.guard';
-import { EmailComponent } from './component/email/email.component';
 //import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
 
 const routes: Routes = [
-  {path:'customer-list',component:CustomerListComponent,canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'customer-save',component:CustomerSaveComponent,canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'customer-edit/:email',component:CustomerEditComponent,canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'product-list',component:ProductListComponent, canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'product-save',component:ProductSaveComponent, canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'product-edit/:proId',component:ProductEditComponent, canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'paymenmethod-list',component:PaymenmethodListComponent, canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'paymenmethod-save',component:PaymenmethodSaveComponent, canActivate:[AuthGuard,AdminguardGuard]},
-  {path:'paymenmethod-edit/:payId',component:PaymenmethodEditComponent, canActivate:[AuthGuard,AdminguardGuard]},
-  {path: 'login',component:LoginComponent, canActivate: [AuthGuard, LogGuardGuard]},
+  {path:'customer-list',component:CustomerListComponent,canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'customer-save',component:CustomerSaveComponent},
+  {path:'customer-edit/:email',component:CustomerEditComponent,canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'product-list',component:ProductListComponent, canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'product-save',component:ProductSaveComponent, canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'product-edit/:proId',component:ProductEditComponent, canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'paymenmethod-list',component:PaymenmethodListComponent, canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'paymenmethod-save',component:PaymenmethodSaveComponent, canActivate:[AuthGuard,AdminguardGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  
+  {path: 'login',component:LoginComponent},
   {path: '',component:LoginComponent},
   { path:'**',pathMatch:'full',redirectTo:'login'}
 ];
