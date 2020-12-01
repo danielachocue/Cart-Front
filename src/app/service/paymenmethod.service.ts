@@ -10,13 +10,16 @@ import { PaymentMethod } from '../domain/payment-method';
 export class PaymenmethodService {
 
   private url: string=environment.apiUrl+'api/paymentMethod/';
+  private headers;
 
-  constructor(public httpClient:HttpClient) { }
+  constructor(public httpClient:HttpClient) { 
+    this.headers=this.createTokenHeader();
+  }
 
   createTokenHeader():HttpHeaders{
     let token=localStorage.getItem('token');
-    let headers=new HttpHeaders({'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDU1NzkyODcsImlzcyI6Imh0dHBzOi8vemF0aHVyYWNvZGUub3JnIiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MDY0NDMyODd9.680UtsxSTWfaQXmm3TdfvmnWOe9B29I4a3m9_ASOQc8'});
-    return headers
+    let headers= new HttpHeaders({'Authorization':token});
+    return headers;
   }
 
   public finAll(): Observable<any>{

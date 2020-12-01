@@ -1,41 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="login.component.css">
-</head>
-<body>
-  <nav>
-    <ul>
-      <li class="item-r"><a href="#">Log Out</a></li>
-      <li class="item-r"><a routerLink="/customer-save">Registrar</a></li>
-      <h2>Cart Front</h2>
-    </ul>
-  </nav><br/>
-  <div class="loggin-box">
-    <h1>Login</h1>
-    <form #loginForm="ngForm">
-      <label for="username">UserName</label>
-      <input type="email"
-             name="username"
-             id="username"
-             #username="ngModel"
-             placeholder="UserName"
-             [(ngModel)]="user.username"/><br/>
-      <label for="password">Password</label>
-      <input type="password"
-             name="password"
-             id="password"
-             #password="ngModel"
-             placeholder="Password"
-             [(ngModel)]="user.password"/><br/>
-    
-      <button (click)="ingresar()">Ingresar</button><br/><br/>
-      <a routerLink="/customer-save">No tienes cuenta?</a>
+<nav>
+  <ul>
+    <li class="item-r"><a href="#">Log Out</a></li>
+    <li class="item-r"><a routerLink="/customer-save">Registro</a></li>
+    <h2>Cart Front</h2>
+  </ul>
+</nav><br />
+<div id="container">
 
-    </form>
+  <div id="fromBox">
+      
+
+      <form #loginForm="ngForm">
+          <h2><b>Log in</b></h2>
+          <input type="email" name="username" id="username" #username="ngModel" placeholder="UserName"
+              [(ngModel)]="user.username" />
+          <br>
+
+          <input type="password" name="password" id="password" #password="ngModel" placeholder="Password"
+              [(ngModel)]="user.password" />
+          <br>
+          <button (click)="ingresar()">Ingresar</button>
+          <br>
+          <br>
+          <a routerLink="/customer-save">No tienes cuenta?</a>
+          
+      </form>
+      <br>
+      
+
   </div>
-</body>
-</html>
+
+
+</div>

@@ -1,52 +1,42 @@
+<nav>
+    <ul>
+      <li class="item-r"><a href="#">Log Out</a></li>
+      <li class="item-r"><a routerLink="/customer-list">Customer List</a></li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+<div id="container">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="customer-edit.component.css">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <ul>
-          <li class="item-r">
-            <a routerLink="/customer-list">Customer List</a>
-          </li>
-          <h2>Cart Front</h2>
-        </ul>
-      </nav><br/>
-        <div class="editForm">
-            <h1>Editar Customer</h1>
-            <div *ngIf="customer">
-                <div *ngIf="showMsg">
-                    <p *ngFor="let msg of mensajes">
-                        {{msg}}
-                    </p>
-                </div>
-            </div>
-            <form #customerForm="ngForm">
-                <h3>Email</h3>
-                <input readonly type="email" name="email" id="email" #email placeholder="Email" [(ngModel)]="customer.email"/> <br/>
-                <h3>Nombre</h3>
-                <input type="text" name="name" id="name" #name placeholder="Name" [(ngModel)]="customer.name"/> <br/>
-                <h3>Direccion</h3>
-                <input type="text" name="address" id="address" #address placeholder="Address" [(ngModel)]="customer.address"/> <br/>
-                <h3>Telefono</h3>
-                <input type="text" name="phone" id="phone" #email placeholder="Phone" [(ngModel)]="customer.phone"/> <br/>
-                <h3>Contraseña</h3>
-                <input type="text" name="token" id="token" #email placeholder="Token" [(ngModel)]="customer.token"/> <br/>
-                <h3>Enable</h3>
-                <select name="enable" id="enable" [(ngModel)]="customer.enable">
-                    <option *ngFor="let enable of enables" [value]="enable.id">
-                        {{enable.name}}
-                    </option>
-                </select>
-                <br/>
-                <button (click)="update()">Edit</button>
-                <button routerLink="/customer-list">Cancel</button>
-            </form>
-        </div>
-</body>
-</html>
+    <div id="fromBox">
+        
+        <form #CustomerForm="ngForm">
+            <h2>Customer Edit</h2>
+            <input readonly type="email" name="email" id="email" #email placeholder="Email" [(ngModel)]="customer.email" />
+            <br>
+            <input type="token" name="token" id="token" #token placeholder="Password" [(ngModel)]="customer.token" />
+            <br>
+            <input type="name" name="name" id="name" #name placeholder="Name" [(ngModel)]="customer.name" />
+            <br>
+            <input type="addres" name="addres" id="addres" #addres placeholder="Addres"
+                [(ngModel)]="customer.address" />
+            <br>
+            <input type="phone" name="phone" id="phone" #phone placeholder="Phone" [(ngModel)]="customer.phone" />
+            <br>
+            <select name="enable" id="enable" #enable placeholder="Enable" [(ngModel)]="customer.enable">
+                <option *ngFor="let enable of enables" [value]="enable.id">
+                    {{enable.name}}
+                </option>
+            </select>
+            <br />
+            <select name="role" id="role" #enable placeholder="Role" [(ngModel)]="customer.role">
+                <option *ngFor="let role of roles" [value]="role.id">
+                    {{role.name}}
+                </option>
+            </select> <br>
+            <button (click)="update()">Save</button>
+            <button routerLink="/customer-list">Cancel</button>
+        </form>
+
+    </div>
+</div>
 

@@ -1,50 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="product-edit.component.css">
-    <title>Product Edit</title>
-</head>
-<body>
-    <nav>
-        <ul>
-          <li class="item-r">
-            <a routerLink="/product-list">Product List</a>
-          </li>
-          <h2>Cart Front</h2>
-        </ul>
-      </nav><br/>
-      <div class="editForm">
-        <h1>Editar Producto</h1>
-        <div *ngIf="product">
-            <div *ngIf="showMsg">
-                <p *ngFor="let msg of mensajes">
-                    {{msg}}
-                </p>
-            </div>
-        </div>
-        <form #productForm="ngForm">
-            <h3>Id</h3>
-            <input readonly type="proId" name="proId" id="proId" #proId placeholder="ProId" [(ngModel)]="product.proId"/> <br/>
-            <h3>Detalle</h3>
-            <input type="text" name="detail" id="detail" #detail placeholder="Detail" [(ngModel)]="product.detail"/> <br/>
-            <h3>Imagen</h3>
-            <input type="text" name="image" id="image" #image placeholder="Image" [(ngModel)]="product.image"/> <br/>
-            <h3>Nombre</h3>
-            <input type="text" name="name" id="name" #name placeholder="Name" [(ngModel)]="product.name"/> <br/>
-            <h3>Precio</h3>
-            <input type="number" name="price" id="price" #price placeholder="Price" [(ngModel)]="product.price"/> <br/>
-            <h3>Enable</h3>
-            <select name="enable" id="enable" [(ngModel)]="product.enable">
+<nav>
+    <ul>
+      <li class="item-r"><a href="#">Log Out</a></li>
+      <li class="item-r"><a routerLink="/product-list">Product List</a></li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+<div id="container">
+
+    <div id="fromBox">
+        
+        <form #ProductForm="ngForm">
+            <h2>Product Edit</h2>
+            <input readonly type="proId" name="proId" id="proId" #email placeholder="ProId" [(ngModel)]="product.proId" />
+            <br>
+            <input type="name" name="name" id="name" #token placeholder="Name" [(ngModel)]="product.name" />
+            <br>
+            <input type="price" name="price" id="price" #name placeholder="Price" [(ngModel)]="product.price" />
+            <br>
+            <input type="detail" name="detail" id="detail" #phone placeholder="Detail" [(ngModel)]="product.detail" />
+            <br>
+            <select name="enable" id="enable" #enable placeholder="Enable" [(ngModel)]="product.enable">
                 <option *ngFor="let enable of enables" [value]="enable.id">
                     {{enable.name}}
                 </option>
             </select>
             <br/>
-            <button (click)="update()">Edit</button>
+            <button (click)="update()">Save</button>
             <button routerLink="/product-list">Cancel</button>
         </form>
-    </div> 
-</body>
-</html>
+
+    </div>
+</div>

@@ -30,15 +30,12 @@ export class ProductListComponent implements OnInit {
     });
   }
   public delete(productId:string): void {
-    this.mensajes = [""];
     this.productService.delete(productId).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El producto se borro con exito"+productId;
+      alert("Producto eliminado exitosamente");
       this.findAll();
     }, err => {
       console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
+      alert(err.error.error);
 
     });
   }

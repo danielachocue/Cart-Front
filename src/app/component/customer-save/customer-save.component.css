@@ -36,99 +36,83 @@ ul li a{
 ul li a:hover{
     background-color:  #00264d;
 }
-.item-r{
-    float: right;
-}
 
 h2{
-    color: white;
+    color: rgb(17, 30, 73);
     text-align: left;
     text-decoration: solid;
     text-transform: capitalize;
     margin-left:20px;
     margin-top: 10px;
     margin-block-end:10px;
-
+  
+}
+.item-r{
+    float: right;
 }
 
-p{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: 12px  
-}
-
-.register-box{
-    width: 320px;
-    height: 500px;
-    color: black;
-    background: #0066cc38;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
+#container{
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    position: relative;
     box-sizing: border-box;
-    padding: 70px 30px;
-    align-content: center;
-    margin-top: 10px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#fromBox{
+    margin-top: -20px;
+    background-color: white;
     border-radius: 10px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+     
+    min-width: 250px;
+    width: 16%;
+
+    min-height: 550px;
+    
 }
 
-.register-box h1{
-    margin-top: -40px;
-    padding: 0;
-    text-align: center;
-    font-size: 22px;
+h2{
+    margin-bottom: 2px;
 }
 
-.register-box h3{
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    font-size: 15px;
-}
-
-.register-box label{
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    display: block;
-}
-
-.register-box input{
+input{
     width: 100%;
-    margin-bottom: 10px;
+    height: 50px;
+    padding: 12px 20px;
+    margin: 13px 0;
+    border-radius: 5px;
+    border: 0.5px solid ;
+    box-sizing: border-box;
 }
 
-.register-box input[type="text"],
-.register-box input[type="email"],
-.register-box select[name="enable"],
-.register-box input[name="password"]{
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
+select{
+    margin-bottom: 9px;
+}
+
+button{
     margin-top: 10px;
-    outline: none;
-    height: 20px;
-    color: black;
+    margin-right: 15px;
+    background-color: #686868; /* Green */
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
 }
 
-.register-box button{
-    border: none;
-    outline: none;
-    width: 100%;
-    height: 30px;
-    background: #0066cc;
-    color: white;
-    font-size: 18px;
-    border-radius: 10px;
-    display: block;
-    margin: auto;
-    margin-bottom: 10px;
-    margin-top: 20px;
-}
-
-.register-box button:hover{
-    background-color:  #00264d;
+button:hover{
+    background-color: #1a1919; 
+    cursor: pointer;
 }

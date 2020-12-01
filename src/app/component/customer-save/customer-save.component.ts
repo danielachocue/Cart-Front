@@ -41,14 +41,12 @@ export class CustomerSaveComponent implements OnInit {
   }
 
   public save(): void {
-    this.mensajes = [""];
     this.customerService.save(this.customer).subscribe(ok => {
      alert("Se grabo el usuario con exito");
      this.authService.createUser(this.customer.email,this.customer.token)
      .then((data)=>{
-       alert("usuario registrado en firebase");
+       alert("Revisa tu correo para confirmarlo email")
        this.authService.sendEmailVerification();
-
        this.customer.token=data.user.uid;
        this.customerService.update(this.customer).subscribe(ok=>{
          this.router.navigate(['/login']);

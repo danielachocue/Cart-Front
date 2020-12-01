@@ -1,44 +1,43 @@
+<nav>
+    <ul>
+      <li class="item-r"><a href="#">Log Out</a></li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+<div id="container">
 
-<div>
-    <nav>
-        <ul>
-            <li class="item-r"><a href="#">Login</a>
-            </li>
-            <h2>Cart Front</h2>
-        </ul>
-    </nav><br />
-    <div class="register-box">
-        <h1>Registro de Usuario</h1>
-        <div *ngIf="showMsg">
-            <p *ngFor="let msg of mensajes">
-                {{msg}}
-            </p>
-        </div>
-        <form #customerForm="ngForm">
+    <div id="fromBox">
+        
+        <form #CustomerForm="ngForm">
+            <h2>Registro</h2>
             <input type="email" name="email" id="email" #email placeholder="Email" [(ngModel)]="customer.email" />
-            <br />
-            <input type="password" name="password" id="password" #email placeholder="Password" />
-            <br />
-            <input type="text" name="name" id="neame" #name placeholder="Name" [(ngModel)]="customer.name" /> <br />
-            <input type="text" name="address" id="address" #address placeholder="Address"
-                [(ngModel)]="customer.address" /> <br />
-            <input type="text" name="phone" id="phone" #email placeholder="Phone" [(ngModel)]="customer.phone" /> <br />
-            <input type="text" name="token" id="token" #email placeholder="Token" [(ngModel)]="customer.token" /> <br />
-
+            <br>
+            <input type="token" name="token" id="token" #token placeholder="Password" [(ngModel)]="customer.token" />
+            <br>
+            <input type="name" name="name" id="name" #name placeholder="Name" [(ngModel)]="customer.name" />
+            <br>
+            <input type="addres" name="addres" id="addres" #addres placeholder="Addres"
+                [(ngModel)]="customer.address" />
+            <br>
+            <input type="phone" name="phone" id="phone" #phone placeholder="Phone" [(ngModel)]="customer.phone" />
+            <br>
             <select name="enable" id="enable" #enable placeholder="Enable" [(ngModel)]="customer.enable">
                 <option *ngFor="let enable of enables" [value]="enable.id">
                     {{enable.name}}
                 </option>
             </select>
             <br />
-            
             <select name="role" id="role" #enable placeholder="Role" [(ngModel)]="customer.role">
                 <option *ngFor="let role of role" [value]="role.id">
                     {{role.name}}
                 </option>
-            </select>
+            </select> <br>
             <button (click)="save()">Save</button>
             <button routerLink="/login">Cancel</button>
         </form>
+
     </div>
+
+
+</div>
 

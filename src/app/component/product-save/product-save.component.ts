@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Enable } from 'src/app/domain/enable';
 import { Product } from 'src/app/domain/product';
 import { EnableService } from 'src/app/service/enable.service';
@@ -18,7 +19,7 @@ export class ProductSaveComponent implements OnInit {
   public mensajes: string[]= [""];
 
   //inyeccion de dependencia
-  constructor(public productService:ProductService,
+  constructor(public router: Router,public productService:ProductService,
               public enableService:EnableService) { }
 
   ngOnInit(): void {
@@ -31,14 +32,16 @@ export class ProductSaveComponent implements OnInit {
   }
 
   public save():void{
-    this.mensajes=[""];
     this.productService.save(this.product).subscribe(ok=>{
-      this.showMsg=true;
-      this.mensajes[0]="El product se grabo con exito";
+      alert("Producto guardado exitosamente");
+      this.productService.update(this.product).subscribe(ok=>{
+        this.router.navigate(['/product-list']);
+      }, err=>{
+        alert(err.error.error);
+      });
     },err=>{
       console.log(err);
-      this.showMsg=true;
-      this.mensajes=err.error.error;
+      alert(err.error.error);
       
     });
   }

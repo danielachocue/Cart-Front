@@ -30,18 +30,12 @@ export class CustomerListComponent implements OnInit {
         console.error(error);
     });
   }
-
   public delete(email:string): void {
-    this.mensajes = [""];
     this.customerService.delete(email).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El customer "+email+ " se borro con exito";
+      alert("Customer eliminado exitosamente");
       this.findAll();
     }, err => {
-      console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
-
+      alert(err.error.error);
     });
   }
   public salir():void{

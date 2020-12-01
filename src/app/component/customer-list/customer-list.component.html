@@ -35,6 +35,7 @@
         <tr>
           <th>Email</th>
           <th>Name</th>
+          <th>Role</th>
           <th>Editar</th>
           <th>Borrar</th>
         </tr>
@@ -42,6 +43,7 @@
       <tr *ngFor="let customer of customers">
         <th>{{customer.email}}</th>
         <th>{{customer.name}}</th>
+        <th>{{customer.role}}</th>
         <th>
           <button [routerLink]="['/customer-edit',customer.email]">Editar</button>
         </th>

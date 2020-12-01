@@ -44,14 +44,11 @@ export class ProductEditComponent implements OnInit {
   }
 
   public update(): void {
-    this.mensajes = [""];
     this.productService.update(this.product).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El producto se modifico con exito" + this.proId;
+      alert("Producto Editado Exitosamente");
     }, err => {
       console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
+      alert(err.error.error);
 
     });
   }
@@ -59,12 +56,10 @@ export class ProductEditComponent implements OnInit {
   public delete(): void {
     this.mensajes = [""];
     this.productService.delete(this.product.proId).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El producto se borro con exito" + this.proId;
+      alert("Producto eliminado exitosamente");
     }, err => {
       console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
+      alert(err.error.error);
 
     });
   }

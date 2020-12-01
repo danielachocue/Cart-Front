@@ -31,15 +31,12 @@ export class PaymenmethodListComponent implements OnInit {
   }
 
   public delete(payId:Number): void {
-    this.mensajes = [""];
     this.paymentMethodService.delete(payId).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El PaymenMethod se borro con exito"+payId;
+      alert("Metodo de pago eliminado exitosamente");
       this.findAll();
     }, err => {
       console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
+      alert(err.error.erro);
 
     });
   }

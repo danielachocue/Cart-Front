@@ -10,14 +10,17 @@ import { Product } from '../domain/product';
 export class ProductService {
   
   private url: string=environment.apiUrl+'api/product/';
-
+  private headers;
+  
   createTokenHeader():HttpHeaders{
     let token=localStorage.getItem('token');
-    let headers=new HttpHeaders({'Authorization':'Bearer  eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDU1NzkyODcsImlzcyI6Imh0dHBzOi8vemF0aHVyYWNvZGUub3JnIiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MDY0NDMyODd9.680UtsxSTWfaQXmm3TdfvmnWOe9B29I4a3m9_ASOQc8'});
-    return headers
+    let headers= new HttpHeaders({'Authorization':token});
+    return headers;
   }
 
-  constructor(public httClient: HttpClient) { }
+  constructor(public httClient: HttpClient) { 
+    this.headers=this.createTokenHeader();
+  }
 
   public findAll(): Observable<any>{
     let headers=this.createTokenHeader();

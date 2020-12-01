@@ -44,14 +44,11 @@ export class PaymenmethodEditComponent implements OnInit {
   }
 
   public update(): void {
-    this.mensajes = [""];
     this.paymenMethodService.update(this.paymenMethod).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El paymenMethod se modifico con exito" + this.payId;
+      alert("Metodo de pago actualizado");
     }, err => {
       console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
+      alert(err.error.error);
 
     });
   }
@@ -59,12 +56,10 @@ export class PaymenmethodEditComponent implements OnInit {
   public delete(): void {
     this.mensajes = [""];
     this.paymenMethodService.delete(this.paymenMethod.payId).subscribe(ok => {
-      this.showMsg = true;
-      this.mensajes[0] = "El paymenMethod se borro con exito" + this.payId;
+      alert("metodo de pago eliminado");
     }, err => {
       console.log(err)
-      this.showMsg = true;
-      this.mensajes = err.error.error;
+      alert(err.error.error);
 
     });
   }

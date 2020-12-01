@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Enable } from 'src/app/domain/enable';
 import { PaymentMethod } from 'src/app/domain/payment-method';
 import { EnableService } from 'src/app/service/enable.service';
@@ -18,7 +19,7 @@ export class PaymenmethodSaveComponent implements OnInit {
   public mensajes: string[]=[""];
 
   //Inyeccion de dependencia
-  constructor(public paymenMethodService:PaymenmethodService,
+  constructor(public router: Router, public paymenMethodService:PaymenmethodService,
               public enableServide:EnableService) { }
 
   ngOnInit(): void {
@@ -31,14 +32,16 @@ export class PaymenmethodSaveComponent implements OnInit {
   }
 
   public save():void{
-    this.mensajes=[""],
     this.paymenMethodService.save(this.paymenMethod).subscribe(ok=>{
-      this.showMsg=true;
-      this.mensajes[0]="El paymenMethod se grabo con exito";
+      alert("payment method guardado exitosamente");
+      this.paymenMethodService.update(this.paymenMethod).subscribe(ok=>{
+        this.router.navigate(['/paymenmethod-list']);
+      }, err=>{
+        alert(err.error.error);
+      });
     },err=>{
       console.log(err);
-      this.showMsg=true;
-      this.mensajes=err.error.erro;
+      alert(err.error.error);
     });
   }
 

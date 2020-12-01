@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="paymenmethod-edit.component.css">
-    <title>Payment Method Edit</title>
-</head>
-<body>
-        <nav>
-        <ul>
-          <li class="item-r">
-            <a routerLink="/paymenmethod-list">Payment Method List</a>
-          </li>
-          <h2>Cart Front</h2>
-        </ul>
-      </nav><br/>
-      <div class="editForm">
-        <h1>Editar Payment Method</h1>
-        <div *ngIf="paymenMethod">
-            <div *ngIf="showMsg">
-                <p *ngFor="let msg of mensajes">
-                    {{msg}}
-                </p>
-            </div>
-        </div>
+<nav>
+    <ul>
+      <li class="item-r"><a href="#">Log Out</a></li>
+      <li class="item-r"><a routerLink="/paymenmethod-list">Payment Method List</a></li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+<div id="container">
+
+    <div id="fromBox">
+        
         <form #paymenMethodForm="ngForm">
-            <h3>PayId</h3>
+            <h2>Payment Method Edit</h2>
             <input readonly type="payId" name="payId" id="payId" #payId placeholder="PayId" [(ngModel)]="paymenMethod.payId"/> <br/>
-            <h3>Nombre</h3>
             <input type="text" name="name" id="name" #name placeholder="Name" [(ngModel)]="paymenMethod.name"/> <br/>
-            <h3>Enable</h3>
             <select name="enable" id="enable" #enable [(ngModel)]="paymenMethod.enable">
                 <option *ngFor="let enable of enables" [value]="enable.id">
                     {{enable.name}}
@@ -39,6 +22,5 @@
             <button (click)="update()">Edit</button>
             <button routerLink="/paymenmethod-list">Cancel</button>
         </form>
-    </div> 
-</body>
-</html>
+    </div>
+</div>
