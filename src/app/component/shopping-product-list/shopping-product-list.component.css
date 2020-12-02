@@ -77,10 +77,6 @@ table{
     width: 100%;
 }
 
-tr{
-    border-block-end: 1px solid;
-}
-
 th, td{ 
     padding: 20px;
     text-align: center;
@@ -94,6 +90,10 @@ thead{
     width: 100%;
     color: white;
     text-align: center;
+}
+
+tr:nth-child(even){
+    background-color: #ddd
 }
 
 tr:hover th{

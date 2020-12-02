@@ -55,10 +55,14 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("usuarioInfo",JSON.stringify(userInfo))
             localStorage.setItem("rol",this.customer.role);
             
-            if(this.customer.role=="A"){
-              this.router.navigate(['/customer-list']);
+            if(userInfo.enable === 'Y'){
+              if(userInfo.role ==='A'){
+                this.router.navigate(['/customer-list']);
+              }else{
+                this.router.navigate(['/tienda']);
+              }
             }else{
-              this.router.navigate(['/product-list']);
+              alert("Usuario inabilitado");
             }
 
           },e=>{

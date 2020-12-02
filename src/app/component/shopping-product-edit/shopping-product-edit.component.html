@@ -1,0 +1,29 @@
+<nav>
+    <ul>
+      <li class="item-r"><a href="#">Log Out</a></li>
+      <li class="item-r"><a routerLink="/shopping-product-list">Shopping Product List</a></li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+<div id="container">
+
+    <div id="fromBox">
+        
+        <form #ProductForm="ngForm">
+            <h2>Shopping Product Edit</h2>
+            <input readonly type="shprId" name="shprId" id="shprId" #shprId placeholder="ShprId" [(ngModel)]="shprs.shprId" />
+            <br>
+            <input readonly type="number" name="carId" id="carId" #carId placeholder="carId" [(ngModel)]="shprs.shoppingCartId" />
+            <br>
+            <input readonly type="productId" name="productId" id="productId" #productId placeholder="ProductId" [(ngModel)]="shprs.productId" />
+            <br>
+            <input type="quantity" name="quantity" id="quantity" #quantity placeholder="Quantity" [(ngModel)]="shprs.quantity" />
+            <br>
+            <input type="total" name="total" id="totla" #quantity placeholder="Total" [(ngModel)]="shprs.total" />
+            <br>
+            <button (click)="update()">Save</button>
+            <button routerLink="/shopping-product-list">Cancel</button>
+        </form>
+
+    </div>
+</div>

@@ -54,7 +54,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   public delete(): void {
-    this.mensajes = [""];
     this.productService.delete(this.product.proId).subscribe(ok => {
       alert("Producto eliminado exitosamente");
     }, err => {

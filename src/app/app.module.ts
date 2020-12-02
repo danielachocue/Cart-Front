@@ -20,6 +20,10 @@ import { LoginComponent } from './component/login/login.component';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { TiendaComponent } from './component/tienda/tienda.component';
+import { ShoppingProductListComponent } from './component/shopping-product-list/shopping-product-list.component';
+import { ShoppingProductEditComponent } from './component/shopping-product-edit/shopping-product-edit.component';
+import { ShoppingProductSaveComponent } from './component/shopping-product-save/shopping-product-save.component';
 
 
 @NgModule({
@@ -35,6 +39,10 @@ import { environment } from 'src/environments/environment';
     PaymenmethodSaveComponent,
     PaymenmethodEditComponent,
     LoginComponent,
+    TiendaComponent,
+    ShoppingProductListComponent,
+    ShoppingProductEditComponent,
+    ShoppingProductSaveComponent,
   ],
   imports: [
     BrowserModule,

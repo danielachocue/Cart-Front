@@ -15,6 +15,10 @@ import {AngularFireAuthGuard,redirectUnauthorizedTo} from '@angular/fire/auth-gu
 import { AuthGuard } from './guard/auth.guard';
 import { AdminguardGuard } from './guard/adminguard.guard';
 import { LogGuardGuard } from './guard/log-guard.guard';
+import { TiendaComponent } from './component/tienda/tienda.component';
+import { ShoppingProductListComponent } from './component/shopping-product-list/shopping-product-list.component';
+import { ShoppingProductEditComponent } from './component/shopping-product-edit/shopping-product-edit.component';
+import { ShoppingProductSaveComponent } from './component/shopping-product-save/shopping-product-save.component';
 //import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
@@ -29,6 +33,11 @@ const routes: Routes = [
   {path:'paymenmethod-list',component:PaymenmethodListComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'paymenmethod-save',component:PaymenmethodSaveComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'paymenmethod-edit/:payId',component:PaymenmethodEditComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'shopping-product-list',component:ShoppingProductListComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'shopping-product-edit/:shprId',component:ShoppingProductEditComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'shopping-product-save',component:ShoppingProductSaveComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+
+  {path:'tienda',component:TiendaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   
   {path: 'login',component:LoginComponent},
   {path: '',component:LoginComponent},

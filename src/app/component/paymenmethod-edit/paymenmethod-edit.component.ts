@@ -46,6 +46,7 @@ export class PaymenmethodEditComponent implements OnInit {
   public update(): void {
     this.paymenMethodService.update(this.paymenMethod).subscribe(ok => {
       alert("Metodo de pago actualizado");
+      this.router.navigate(['/paymenmethod-list']);
     }, err => {
       console.log(err)
       alert(err.error.error);

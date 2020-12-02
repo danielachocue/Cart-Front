@@ -18,6 +18,9 @@
         <a routerLink="/customer-list">Customer List</a>
       </li>
       <li class="item-r">
+        <a routerLink="/shopping-product-list">Shopping Product</a>
+      </li>
+      <li class="item-r">
         <a routerLink="/product-save">Product Save</a>
       </li>
 
@@ -46,7 +49,9 @@
         <th>{{product.proId}}</th>
         <th>{{product.name}}</th>
         <th>{{product.price}}</th>
-        <th>{{product.image}}</th>
+        <th>
+          <a href="{{product.image}}" target="_blank"><img [src]="product.image " fallimg="default" class="img-fluid " width="50px" height="50px"> </a>
+        </th>
         <th>
           <button [routerLink]="['/product-edit',product.proId]">Editar</button>
         </th>

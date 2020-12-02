@@ -11,7 +11,6 @@ export class AppComponent {
   public isAuth():boolean{
     return !!localStorage.getItem('usuario');
   }
-  
 
 }
 
