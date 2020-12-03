@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/domain/product';
 import { ShoppingCart } from 'src/app/domain/shoppingCart';
 import { CartServiceService } from 'src/app/service/cart-service.service';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-tienda',
@@ -10,26 +12,19 @@ import { CartServiceService } from 'src/app/service/cart-service.service';
 })
 export class TiendaComponent implements OnInit {
  
-  public shoppingCarts: ShoppingCart[];
-  public email: string;
-  pageActual: number = 1;
-  
-  constructor(public cartService: CartServiceService,
-    public activatedRoute: ActivatedRoute) { }
+  public products:Product[];
+
+  constructor(public productService:ProductService) { }
 
   ngOnInit(): void {
-    let params = this.activatedRoute.params['_value'];
-    this.email = params.email;
-    this.findShcaByEmail();
-  }
+    this.findAll();
 
-  public findShcaByEmail(): void {
-    this.cartService.findShcaByEmail(this.email).subscribe(
-      data => {
-        this.shoppingCarts = data;
-      }, error => {
-        console.log(error);
-      }
-    );
   }
+  findAll():void{
+    this.productService.findAll().subscribe(data=>{
+      this.products=data;
+    },error=>{
+      console.error(error);
+    })
+  } 
 }

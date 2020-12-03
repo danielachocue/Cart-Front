@@ -1,0 +1,25 @@
+<nav>
+    <ul>
+      <li class="item-r"><a href="#">Log Out</a></li>
+      <li class="item-r"><a href="#">Pagar Ahora</a></li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+  <div class="row">
+        <div  *ngFor="let product of products">
+            <div class="card" style="width: 18rem;">
+                <h6 class="m-2"><span class="badge badge-danger ">New</span></h6>
+                <img src={{[product.image]}} class="card-img-top img-fluid p-3">
+                <div class="card-body">
+                    <h4 class="card-title"> <b> {{product.name}}</b></h4>
+                    <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
+                    <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
+                    <div class="">
+                        <button class="card-link btn btn-block btn-secondary"><i class="fas fa-shopping-cart"> Buy now</i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
