@@ -19,6 +19,8 @@ import { TiendaComponent } from './component/tienda/tienda.component';
 import { ShoppingProductListComponent } from './component/shopping-product-list/shopping-product-list.component';
 import { ShoppingProductEditComponent } from './component/shopping-product-edit/shopping-product-edit.component';
 import { ShoppingProductSaveComponent } from './component/shopping-product-save/shopping-product-save.component';
+import { ShoppingCartListComponent } from './component/shopping-cart-list/shopping-cart-list.component';
+import { ShoppingCartSaveComponent } from './component/shopping-cart-save/shopping-cart-save.component';
 //import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
@@ -36,6 +38,9 @@ const routes: Routes = [
   {path:'shopping-product-list',component:ShoppingProductListComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'shopping-product-edit/:shprId',component:ShoppingProductEditComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'shopping-product-save',component:ShoppingProductSaveComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'shopping-cart-list',component:ShoppingCartListComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'shopping-cart-save',component:ShoppingCartSaveComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'shopping-cart-edit/:carId',component:ShoppingProductEditComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
 
   {path:'tienda',component:TiendaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   
