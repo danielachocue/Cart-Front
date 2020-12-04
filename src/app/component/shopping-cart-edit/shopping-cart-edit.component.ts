@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enable } from 'src/app/domain/enable';
 import { shoppingCartModel } from 'src/app/modelos/shoppingCartModelo';
+import { EnableService } from 'src/app/service/enable.service';
 import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
 
 @Component({
@@ -10,15 +11,19 @@ import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
   styleUrls: ['./shopping-cart-edit.component.css']
 })
 export class ShoppingCartEditComponent implements OnInit {
-
-  title: string = 'Update Shopping Cart';
+  
   shoppingCart = new shoppingCartModel();
   enables: Enable[];
 
-  constructor(private shoppingCartService: ShoppingCartService, private routActive: ActivatedRoute, private route: Router) { }
+  constructor(private shoppingCartService: ShoppingCartService, private routActive: ActivatedRoute, private route: Router,private enableService: EnableService) { }
 
   ngOnInit(): void {
     this.loadshoppingCart();
+    this.findAllEnable();
+  }
+
+  public findAllEnable(): void {
+    this.enables = this.enableService.findAll();
   }
 
   loadshoppingCart(): void {

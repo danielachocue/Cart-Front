@@ -29,7 +29,7 @@ export class ShoppingCartSaveComponent implements OnInit {
   save(): void {
     this.shoppingCartService.save(this.shoppingCart).subscribe((rsp) => {
       alert("Shopping Cart guardado");
-      this.route.navigate(['/shoppingCart']);
+      this.route.navigate(['/shopping-cart-list']);
     });
   }
 

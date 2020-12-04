@@ -30,7 +30,7 @@ export class ShoppingCartService {
     return this.httClient.get<any>(this.url+'findById/'+carId,{headers:headers});
   }
 
-  public delete(carId:string):Observable<any>{
+  public delete(carId:number):Observable<any>{
     let headers=this.createTokenHeader();
     return this.httClient.delete<any>(this.url+'delete/'+carId,{headers: headers});
   }
@@ -44,5 +44,40 @@ export class ShoppingCartService {
     let headers=this.createTokenHeader();
     return this.httClient.put<any>(this.url+'update',carId,{headers: headers});
 
+  }
+
+  public createCart(email:string):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'createCart/'+email,{headers:headers});
+  }
+
+  public addProduct(carId:number,proId:string,quantity:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'addProduct/'+carId+"/"+proId+"/"+quantity,{headers:headers});
+  }
+
+  public removeProduct(carId:number,proId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.delete<any>(this.url+'removeProduct/'+carId+"/"+proId,{headers:headers});
+  }
+
+  public clearCart(carId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.delete<any>(this.url+'clearCart/'+carId,{headers:headers});
+  }
+
+  public findShoppingProductByShoppingCart(carId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.put<any>(this.url+'findShoppingProductByShoppingCart/'+carId,{headers:headers});
+  }
+
+  public findCarIdShoppingCartsByEmail(email:string):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'findCarIdShoppingCartsByEmail/'+email,{headers:headers});
+  }
+
+  public closeShoppingCart(carId:number,payId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'closeShoppingCart/'+carId+"/"+payId,{headers:headers});
   }
 }

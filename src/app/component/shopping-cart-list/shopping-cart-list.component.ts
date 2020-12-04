@@ -40,7 +40,7 @@ export class ShoppingCartListComponent implements OnInit {
     })
   }
 
-  delete(carId:string):void{
+  delete(carId:number):void{
         this.shoppingCartService.delete(carId).subscribe(data=>{
           this.shpcars =this.shpcars;
           this.findAll();

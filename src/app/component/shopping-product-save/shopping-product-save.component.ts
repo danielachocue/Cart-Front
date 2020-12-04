@@ -15,6 +15,7 @@ export class ShoppingProductSaveComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   save(): void {
     this.ShoppingProductService.save(this.shprs).subscribe((rsp) => {
       alert("Se guardo exitosamente el Shopping Product");

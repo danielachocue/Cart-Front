@@ -8,10 +8,12 @@
 
     <div id="fromBox">       
         <form #productFrom="ngForm">
-            <h2>Registro de SphCart</h2>         
+            <h2>Registro de SphCart</h2>
+            <input type="number" name="carId" id="carId" #CarId placeholder="CarId" [(ngModel)]="shoppingCart.carId"/> <br/>         
             <input type="Email" name="email" id="email" #email placeholder="Email" [(ngModel)]="shoppingCart.customerEmail"/> <br/>
             <input type="number" name="items" id="items" #Items placeholder="Items" [(ngModel)]="shoppingCart.items"/> <br/>
             <input type="number" name="payId" id="payId" #payId placeholder="PayId" [(ngModel)]="shoppingCart.paymentMethodId"/> <br/>
+            <input type="number" name="total" id="total" #Total placeholder="Total" [(ngModel)]="shoppingCart.total"/> <br/>
             <br>
             <select name="enable" id="enable" #enable placeholder="Enable" [(ngModel)]="shoppingCart.enable">
                 <option *ngFor="let enable of enables" [value]="enable.id">
