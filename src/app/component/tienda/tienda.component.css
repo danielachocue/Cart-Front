@@ -47,21 +47,43 @@ ul {
       margin-block-end:10px;
   
   }
-  
+
   .item-r{
       float: right;
   }
 
-  .row {
-      width: 100%;
-      height: 100%;
-      padding: 0;
-  }
+.row{
+    width: 70%;
+    display: flex;
+    margin-left: 50px;
+    margin-top: 50px;
+    
+}
 
   .card{
-      width: 100%;
-      height: 100%;
+     display: flex;
+     flex-wrap: wrap;
   }
-  .card-body .card-title{
-      align-items: center;
+
+  .image{
+    height: 50%;
+    width: 50%;
+
+  }
+
+  .card-body{
+      margin-left: 10px;
+      border-radius: 5px solid;
+  }
+
+  h3{
+      color: rgb(4, 29, 83);
+      text-align: center;
+      text-decoration: solid;
+      text-transform: capitalize;
+      font-size: 30px;
+      margin-left:20px;
+      margin-top: 10px;
+      margin-block-end:10px;
+  
   }
