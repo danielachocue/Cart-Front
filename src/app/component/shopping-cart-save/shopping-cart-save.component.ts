@@ -33,4 +33,10 @@ export class ShoppingCartSaveComponent implements OnInit {
     });
   }
 
+  createCart():void{
+    this.shoppingCartService.createCart(this.shoppingCart.customerEmail).subscribe(resp=>{
+      this.route.navigate(['/shoppingCart'])
+    })
+  }
+
 }

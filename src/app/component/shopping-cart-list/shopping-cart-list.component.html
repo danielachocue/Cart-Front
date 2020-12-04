@@ -37,8 +37,9 @@
             <th>Email</th>
             <th>PayId</th>
             <th>Enable</th>
-            <th>Edit</th>
+            <th>Disabled</th>
             <th>Borrar</th>
+            <th>Clear</th>
         </tr>
       </thead>
       <tr *ngFor="let shpcar of shpcars">
@@ -49,10 +50,13 @@
         <th>{{shpcar.paymentMethodId}}</th>
         <th>{{shpcar.enable}}</th>
         <th>
-          <button [routerLink]="['/shopping-cart-edit',shpcar.carId]">Editar</button>
+          <button (click)="disabled(shpcar.carId)">Habilitar</button>
         </th>
         <th>
           <button (click)="delete(shpcar.carId)">Borrar</button>
+        </th>
+        <th>
+          <button (click)="clearCart(shpcar.carId)">Borrar</button>
         </th>
       </tr>
     </table>

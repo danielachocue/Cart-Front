@@ -1,1 +1,46 @@
-<p>detalle-compra works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li class="item-r">
+        <a routerLink="salir()">Log Out</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/tienda">Tienda</a>
+      </li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br/>
+  <div id="main-container">
+    <table id="tabla">
+      <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Delete</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let product of products">
+        <th>{{product.productId}}</th>
+        <th>{{product.total/product.quantity | currency:'COP '}}</th>
+        <th>{{product.quantity}}</th>
+        <th>{{product.total | currency:'COP '}}</th>
+        <th>
+          <button (click)="delete(customer.email)">Borrar</button>
+        </th>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

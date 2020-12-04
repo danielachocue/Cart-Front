@@ -13,9 +13,8 @@
             <input type="tex" name="proId" id="proId" #proId placeholder="ProId" [(ngModel)]="shprs.productId"/> <br/>
             <input type="number" name="carId" id="carId" #detail placeholder="CarId" [(ngModel)]="shprs.shoppingCartId"/> <br/>
             <input type="number" name="quantity" id="quantity" #enable placeholder="Quantity" [(ngModel)]="shprs.quantity"/> <br/>
-            <input type="number" name="total" id="total" #image placeholder="Total" [(ngModel)]="shprs.total"/><br/>
 
-            <button (click)="save()">Save</button>
+            <button (click)="addProduct()">Save</button>
             <button routerLink="/shopping-product-list">Cancel</button>
         </form>    
     </div>
