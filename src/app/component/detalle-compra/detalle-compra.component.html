@@ -23,24 +23,43 @@
     <table id="tabla">
       <thead>
         <tr>
-            <th>#</th>
-            <th>Name</th>
+            <th>ProId</th>
             <th>Price</th>
             <th>Items</th>
             <th>Total</th>
             <th>Delete</th>
         </tr>
       </thead>
-      <tr *ngFor="let product of products">
+      <tr *ngFor="let product of products2">
         <th>{{product.productId}}</th>
         <th>{{product.total/product.quantity | currency:'COP '}}</th>
         <th>{{product.quantity}}</th>
         <th>{{product.total | currency:'COP '}}</th>
         <th>
-          <button (click)="delete(customer.email)">Borrar</button>
+          <button (click)="delete(product.productId)">Borrar</button>
         </th>
       </tr>
     </table>
+    
+  <div class="form-group row">
+        
+    <form #DetalletForm="ngForm">
+        <h2>Product Edit</h2>
+        <input class="form-control " type="text" placeholder="Card Number" name="cardNumber" [(ngModel)]="purchase.cardNumber" required minlength="16" maxlength="19" #cardNumber="ngModel">
+        <br>
+        <select class="custom-select" name="cardType" #cardType placeholder="Card Type" [(ngModel)]="purchase.cardType">
+        <option *ngFor="let payment of payments" value="{{payment.payId}}">{{payment.name}}</option>
+      </select>
+        <br>
+        <input class="form-control " type="date" name="expirationDate" [(ngModel)]="purchase.expirationDate" required #expirationDate="ngModel">
+        <br>
+        <input class="form-control " type="password" placeholder="CVV" name="cvv" [(ngModel)]="purchase.password" required minlength="4" maxlength="4" #cvv="ngModel">
+        <br>
+        <br/>
+        <button (click)="closePurchase()">Finalizar Compra</button>
+    </form>
+
+</div>
   </div>
 </body>
 </html>

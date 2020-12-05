@@ -45,7 +45,7 @@ const routes: Routes = [
   {path:'shopping-cart-edit/:carId',component:ShoppingCartEditComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
 
   {path:'tienda',component:TiendaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'detalle-compra',component:DetalleCompraComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'detalle-compra/:email',component:DetalleCompraComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   
   {path: 'login',component:LoginComponent},
   {path: '',component:LoginComponent},

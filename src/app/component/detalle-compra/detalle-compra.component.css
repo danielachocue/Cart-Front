@@ -99,6 +99,11 @@ tr:hover th{
     background-color: #004d99 ;
     color: white;
 }
+
+#DetalleForm{
+   margin-top: 100px;
+}
+
 button{
     border: none;
     outline: none;

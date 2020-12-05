@@ -20,7 +20,7 @@ export class TiendaComponent implements OnInit {
   public products: Product[];
   email: string;
   totalItems: number = 0;
-  quantity: number = 1;
+  quantity: number = 0;
   carId: number;
   public carts: ShoppingCart[];
   public shoppingProduct: AddShoppingProduct;

@@ -1,124 +1,94 @@
-* {
-    margin:0;
-    padding:0;
-    overflow: auto;
+body{
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background: #0066cc;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    padding: 20px;
-    background-color: #0066cc;
-  }
-  
-  ul li{
-      display: inline-block;
-  }
-  
-  ul li a{
-      color: white;
-      text-decoration: none;
-      padding: 20px 20px;
-      display: block;
-  
-  }
-  ul li a:hover{
-      background-color:  #00264d;
-  }
-  
-  
-  h2{
-      color: rgb(4, 29, 83);
-      text-align: left;
-      text-decoration: solid;
-      text-transform: capitalize;
-      margin-left:20px;
-      margin-top: 10px;
-      margin-block-end:10px;
-  
-  }
-
-  .item-r{
-      float: right;
-  }
-
-.row{
-    width: 70%;
-    display: flex;
-    margin-left: 50px;
-    margin-top: 50px;
-    
-}
-
-.items{
-    float: right;
-    margin-right: 50px;
-    border: 1px solid;
-    border-radius: 5px;
-    height: 20%;
-    width: 20%;
     align-content: center;
 }
 
 
-.items button{
-    width: 50%;
-    height: 50%;
-    margin-top:6%;
-    margin-left: 15px;
-    background-color: #686868;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
+li {
+    float: right;
 }
-
-.items button:hover{
-    background-color: #1a1919; 
-    cursor: pointer;
-}
-
-span{
-    margin-right: 50%;
-}
-  .card{
-     display: flex;
-     flex-wrap: wrap;
-  }
-
-  .image{
-    height: 25%;
-    width: 25%;
-
-  }
-
-  .card-body{
-      margin-left: 10px;
-      border-radius: 5px solid;
-  }
-
-  h3{
-      color: rgb(4, 29, 83);
-      text-align: center;
-      text-decoration: solid;
-      text-transform: capitalize;
-      font-size: 24px;
-      margin-left:20px;
-      margin-top: 10px;
-      margin-block-end:10px;
   
+li a {
+    display: block;
+    padding: 20px;
+    background-color: #0066cc;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+    display: block;
+
+}
+ul li a:hover{
+    background-color:  #00264d;
+}
+
+h3{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 22px;
+}
+  
+h2{
+    color: white;
+    text-align: left;
+    text-decoration: solid;
+    text-transform: capitalize;
+    margin-left:20px;
+    margin-top: 10px;
+    margin-block-end:10px;
+  
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+.card {
+    width: 100%;
+    display: block;
+  }
+
+.car-body{
+    line-height: 1.5;
+    font-size: 0.9em;
+    padding: 15px;
+}
+
+button {
+    background: blue;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    padding: 0.75em 2em;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    font-size: medium;
+    border-radius: 5px;
+    color: white;
+    width: 70%;
+    margin-top: 10px;
   }

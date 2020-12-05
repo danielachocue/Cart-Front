@@ -2,34 +2,25 @@
     <ul>
       <li class="item-r"><a href="#">Log Out</a></li>
       <li class="item-r"><a href="#">Pagar Ahora</a></li>
-      <li class="item-r"><a routerLink="/detalle-compra">Detalle Compra</a></li>
+      <li class="item-r"><a [routerLink]="['/detalle-compra',email]">Detalle Compra</a></li>
       <h2>Cart Front</h2>
     </ul>
   </nav><br />
-  
-  <h3>Lista de Productos Sel</h3>
-  <div class= "items">
-    <h3>Cantidad Productos</h3><br>
-    <span> {{totalItems}}</span>
-    <div>
-        <button (click)="clearCart()">Borrar Carrito</button>
-    </div>
-</div>
+  <h3>Lista de Productos</h3>
   <div class="row">
-        <div  *ngFor="let product of products">
-            <div class="card">
-                <img src={{[product.image]}} class="image">
-                <div class="card-body">
-                    <h4 class="card-title"> <b> {{product.name}}</b></h4>
-                    <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
-                    <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
-                    <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity">
-                    <div class="">
-                        <button (click)="addProduct(product.proId,product.name)" class="card-link">Comprar</button>
+            <div  *ngFor="let product of products">
+                <div class="card">
+                    <img src={{[product.image]}} style="width:100%">
+                    <div class="card-body">
+                        <h4 class="card-title"> <b> {{product.name}}</b></h4>
+                        <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
+                        <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
+                        <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity">
+                        <div class="">
+                            <button class="btn" (click)="addProduct(product.proId,product.name)" class="card-link">Comprar</button>
+                        </div>
                     </div>
-
-                </div>
-            </div>
         </div>
+        </div>
+  </div>
 
-    </div>
