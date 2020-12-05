@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li class="item-r">
+        <a routerLink="salir()">Log Out</a>
+      </li>
+       <li class="item-r">
+        <a routerLink="/paymenmethod-list">PaymenMethod List</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/product-list">Product List</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/shopping-cart-list">Shopping Cart</a>
+      </li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
+  <div id="main-container">
+    <table id="tabla">
+      <thead>
+        <tr>
+            <th>#</th>
+            <th>ShprId</th>
+            <th>Name</th>
+            <th>proId</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th>Total</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</body>
+</html>

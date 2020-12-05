@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AddShoppingProduct } from 'src/app/domain/addShoppingProduct';
+import { Email } from 'src/app/domain/email';
 import { Product } from 'src/app/domain/product';
 import { ShoppingCart } from 'src/app/domain/shoppingCart';
 import { CartServiceService } from 'src/app/service/cart-service.service';
@@ -20,11 +23,18 @@ export class TiendaComponent implements OnInit {
   quantity: number = 1;
   carId: number;
   public carts: ShoppingCart[];
+  public shoppingProduct: AddShoppingProduct;
+  public creatCartEmail: Email = new Email(null);
+  public clientFirebase: Subscription =new Subscription
 
   constructor(public productService: ProductService, public shoppingCartService: ShoppingCartService, public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.findAll();
+    this.clientFirebase=this.auth.user.subscribe((userFirebase)=>{
+      this.email = userFirebase.email;
+      this.checkCarts();
+   })
 
   }
   findAll(): void {
@@ -36,23 +46,30 @@ export class TiendaComponent implements OnInit {
   }
 
   addProduct(proId: string, product: string): void {
+
+    this.shoppingProduct = new AddShoppingProduct(null, null, null);
     this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(resp => {
       this.carts = resp;
       this.carts.forEach(car => {
-        this.carId = car.carId;
-        this.shoppingCartService.addProduct(this.carId, proId, this.quantity).subscribe((resp) => {
-        })
+        if (car.enable === 'Y' && car.paymentMethodId === null) {
+          this.carId = car.carId;
+          this.shoppingProduct.carId = car.carId;
+          this.shoppingProduct.proId = proId;
+          this.shoppingProduct.quantity = this.quantity;
+          this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((respo) => {
+            alert("producto agregado");
+          })
+        }
       });
       this.quantity = 1;
     })
-
   }
 
   itemsShoppingCart(): void {
     this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(resp => {
       this.carts = resp;
       this.carts.forEach(car => {
-        if (car.enable === 'Y') {
+        if (car.enable === 'Y' && car.paymentMethodId === null) {
           this.totalItems = car.items;
         }
       });
@@ -65,7 +82,8 @@ export class TiendaComponent implements OnInit {
       this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(x => {
         this.carts = x;
         if (this.carts === null) {
-          this.shoppingCartService.createCart(this.email).subscribe(resp => {
+          this.creatCartEmail.email = this.email;
+          this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp => {
             setTimeout(() => {
               this.itemsShoppingCart();
             }, 300);
@@ -73,7 +91,7 @@ export class TiendaComponent implements OnInit {
         } else {
           setTimeout(() => {
             this.carts.forEach(car => {
-              if (car.enable === 'Y') {
+              if (car.enable === 'Y' && car.paymentMethodId === null) {
                 setTimeout(() => {
                   this.itemsShoppingCart();
                   validate = true;
@@ -84,16 +102,17 @@ export class TiendaComponent implements OnInit {
             )
             setTimeout(() => {
               if (validate === false) {
-                this.shoppingCartService.createCart(this.email).subscribe(resp => {
+                this.creatCartEmail.email = this.email;
+                this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp => {
                   setTimeout(() => {
                     this.itemsShoppingCart();
-                  }, 300);
+                  }, 500);
                 })
 
               }
-            }, 300);
+            }, 500);
 
-          }, 500);
+          }, 700);
         }
 
 
@@ -106,14 +125,17 @@ export class TiendaComponent implements OnInit {
   clearCart(): void {
     this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(resp => {
       this.carts = resp;
-      alert("Shopping Car limpio");
       this.carts.forEach(car => {
-        if (car.enable == 'Y') {
+        if (car.enable === 'Y') {
           this.carId = car.carId;
+          this.shoppingCartService.clearCart(this.carId).subscribe(data => {
+            this.totalItems = 0;
+          }, error => {
+          })
         }
       })
-    }, err => {
-      console.log(err);
     })
   }
+
+
 }

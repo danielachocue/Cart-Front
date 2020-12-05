@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from 'src/app/domain/shoppingCart';
+import { CloseShoppingCart } from 'src/app/domain/shoppingCartClose';
 import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ShoppingCartListComponent implements OnInit {
   public shpcars: ShoppingCart[];
   id: string;
   pageActual: number = 1;
+  public cartClose:CloseShoppingCart= new CloseShoppingCart(null,null);
 
   constructor(public shoppingCartService: ShoppingCartService) { }
 
@@ -59,7 +61,10 @@ export class ShoppingCartListComponent implements OnInit {
   }
 
   disabled(carId: number, payId: number = 1): void {
-    this.shoppingCartService.closeShoppingCart(carId, payId).subscribe((resp) => {
+    this.cartClose.carId=carId;
+    this.cartClose.payId=payId;
+    console.log(this.cartClose);
+    this.shoppingCartService.closeShoppingCart(this.cartClose).subscribe((resp)=>{
       this.findAll();
     }
     )

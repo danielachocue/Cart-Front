@@ -3,7 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AddShoppingProduct } from '../domain/addShoppingProduct';
+import { Email } from '../domain/email';
 import { ShoppingCart } from '../domain/shoppingCart';
+import { CloseShoppingCart } from '../domain/shoppingCartClose';
 
 @Injectable({
   providedIn: 'root'
@@ -35,25 +38,24 @@ export class ShoppingCartService {
     return this.httClient.delete<any>(this.url+'delete/'+carId,{headers: headers});
   }
 
-  public save(carId:ShoppingCart):Observable<any>{
+  public save(shoppingCart:ShoppingCart):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.post<any>(this.url+'save',carId,{headers: headers});
+    return this.httClient.post<any>(this.url+'save',shoppingCart,{headers: headers});
   }
 
-  public update(carId:ShoppingCart):Observable<any>{
+  public update(shoppingCart:ShoppingCart):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.put<any>(this.url+'update',carId,{headers: headers});
-
+    return this.httClient.put<any>(this.url+'update',shoppingCart,{headers: headers});
   }
 
-  public createCart(email:string):Observable<any>{
+  public createCart(email:Email):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.get<any>(this.url+'createCart/'+email,{headers:headers});
+    return this.httClient.post<any>(this.url+'createCart',email,{headers:headers});
   }
 
-  public addProduct(carId:number,proId:string,quantity:number):Observable<any>{
+  public addProduct(shoppingProduct:AddShoppingProduct):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.get<any>(this.url+'addProduct/'+carId+"/"+proId+"/"+quantity,{headers:headers});
+    return this.httClient.post<any>(this.url+'addProduct',shoppingProduct,{headers:headers});
   }
 
   public removeProduct(carId:number,proId:number):Observable<any>{
@@ -76,8 +78,8 @@ export class ShoppingCartService {
     return this.httClient.get<any>(this.url+'findCarIdShoppingCartsByEmail/'+email,{headers:headers});
   }
 
-  public closeShoppingCart(carId:number,payId:number):Observable<any>{
+  public closeShoppingCart(cartClose:CloseShoppingCart):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.get<any>(this.url+'closeShoppingCart/'+carId+"/"+payId,{headers:headers});
+    return this.httClient.put<any>(this.url+'closeShoppingCart',cartClose,{headers:headers});
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddShoppingProduct } from 'src/app/domain/addShoppingProduct';
 import { shoppingProductModel } from 'src/app/modelos/shoppingProdcutModel';
 import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
 import { ShoppingProductService } from 'src/app/service/shopping-product.service';
@@ -12,6 +13,8 @@ import { ShoppingProductService } from 'src/app/service/shopping-product.service
 export class ShoppingProductSaveComponent implements OnInit {
   title:string='New Shopping Product';
   shprs = new shoppingProductModel();
+  public shoppingProduct:AddShoppingProduct= new AddShoppingProduct(null,null,null);
+  
   constructor(private ShoppingProductService:ShoppingProductService,private route:Router,private shoppingCartService:ShoppingCartService) { }
 
   ngOnInit(): void {
@@ -26,7 +29,10 @@ export class ShoppingProductSaveComponent implements OnInit {
   }
 
   addProduct():void{
-    this.shoppingCartService.addProduct(this.shprs.shoppingCartId,this.shprs.productId,this.shprs.quantity).subscribe((rsp)=>{
+    this.shoppingProduct.carId=this.shprs.shoppingCartId;
+    this.shoppingProduct.proId=this.shprs.productId;
+    this.shoppingProduct.quantity=this.shprs.quantity;
+    this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((rsp)=>{
       this.route.navigate(['/shoppingProduct'])
 
     })

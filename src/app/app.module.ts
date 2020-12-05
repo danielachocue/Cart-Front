@@ -28,6 +28,7 @@ import { ShoppingCartListComponent } from './component/shopping-cart-list/shoppi
 import { ShoppingCartEditComponent } from './component/shopping-cart-edit/shopping-cart-edit.component';
 import { ShoppingCartSaveComponent } from './component/shopping-cart-save/shopping-cart-save.component';
 import { DetalleCompraComponent } from './component/detalle-compra/detalle-compra.component';
+import { ListaComprasComponent } from './component/lista-compras/lista-compras.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { DetalleCompraComponent } from './component/detalle-compra/detalle-compr
     ShoppingCartEditComponent,
     ShoppingCartSaveComponent,
     DetalleCompraComponent,
+    ListaComprasComponent,
   ],
   imports: [
     BrowserModule,
