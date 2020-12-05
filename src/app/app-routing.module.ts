@@ -23,6 +23,8 @@ import { ShoppingCartListComponent } from './component/shopping-cart-list/shoppi
 import { ShoppingCartSaveComponent } from './component/shopping-cart-save/shopping-cart-save.component';
 import { ShoppingCartEditComponent } from './component/shopping-cart-edit/shopping-cart-edit.component';
 import { DetalleCompraComponent } from './component/detalle-compra/detalle-compra.component';
+import { ListaComprasComponent } from './component/lista-compras/lista-compras.component';
+import { PreviewListaComponent } from './component/preview-lista/preview-lista.component';
 //import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
@@ -46,6 +48,9 @@ const routes: Routes = [
 
   {path:'tienda',component:TiendaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'detalle-compra/:email',component:DetalleCompraComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'lista-compras',component:ListaComprasComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'preview-lista',component:PreviewListaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'preview-lista/lista-compras/:email/:carId',component:PreviewListaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   
   {path: 'login',component:LoginComponent},
   {path: '',component:LoginComponent},

@@ -1,45 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Compras</title>
-</head>
-
-<body>
-  <nav>
-    <ul>
-      <li class="item-r">
-        <a routerLink="salir()">Log Out</a>
-      </li>
-       <li class="item-r">
-        <a routerLink="/paymenmethod-list">PaymenMethod List</a>
-      </li>
-      <li class="item-r">
-        <a routerLink="/product-list">Product List</a>
-      </li>
-      <li class="item-r">
-        <a routerLink="/shopping-cart-list">Shopping Cart</a>
-      </li>
-      <h2>Cart Front</h2>
-    </ul>
-  </nav><br />
-  <div id="main-container">
-    <table id="tabla">
-      <thead>
-        <tr>
-            <th>#</th>
-            <th>ShprId</th>
-            <th>Name</th>
-            <th>proId</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Image</th>
-            <th>Total</th>
-        </tr>
-      </thead>
-    </table>
+  
+<div class="container">
+  <h1 class="text-center mt-5">
+      {{title}}
+  </h1>
+  <hr>
+  <div class="text-right mb-4">
   </div>
-</body>
-</html>
+
+  <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center mb-4">
+          <thead class="thead-dark">
+              <tr>
+
+                  <th>#</th>
+                  <th>CarId</th>
+                  <th>Name</th>
+                  <th>ProId</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Image</th>
+                  <th>Total</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let product of products2">
+                  <td>{{i+1}}</td>
+                  <td>{{product.shoppingCartId}}</td>
+                  <td>{{product.name}}</td>
+                  <td>{{product.productId}}</td>
+                  <td>{{product.total/product.quantity | currency:'COP '}}</td>
+                  <td>{{product.quantity}}</td>
+                  <td class="text-center">
+                      <a href="{{product.image}}" target="_blank"><img [src]="product.image " fallimg="default" class="img-fluid " width="50px" height="50px"> </a>
+                  </td>
+                  <td>{{product.total | currency:'COP '}}</td>
+
+              </tr>
+          </tbody>
+
+      </table>
+  </div>
+
+
+</div>
+

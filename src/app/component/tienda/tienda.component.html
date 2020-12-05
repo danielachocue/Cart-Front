@@ -2,7 +2,8 @@
     <ul>
       <li class="item-r"><a href="#">Log Out</a></li>
       <li class="item-r"><a href="#">Pagar Ahora</a></li>
-      <li class="item-r"><a [routerLink]="['/detalle-compra',email]">Detalle Compra</a></li>
+      <li class="item-r"><a [routerLink] ="['/detalle-compra',email]">Detalle Compra</a></li>
+      <li class="item-r"><a ><i class="fas fa-shopping-cart fa-lg"></i></a></li>
       <h2>Cart Front</h2>
     </ul>
   </nav><br />
@@ -17,7 +18,7 @@
                         <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
                         <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity">
                         <div class="">
-                            <button class="btn" (click)="addProduct(product.proId,product.name)" class="card-link">Comprar</button>
+                            <button class="btn" (click)="addProduct(product.proId,product.name)" class="card-link"><i class="fas fa-shopping-cart"></i></button>
                         </div>
                     </div>
         </div>

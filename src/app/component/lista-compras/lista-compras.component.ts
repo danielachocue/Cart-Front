@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ShoppingProduct } from 'src/app/domain/shoppingProduct';
+import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
+import { ShoppingProductService } from 'src/app/service/shopping-product.service';
 
 @Component({
   selector: 'app-lista-compras',
@@ -7,11 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComprasComponent implements OnInit {
 
-  title:string='Shopping Record';
-  
-  constructor() { }
+  public products:ShoppingProduct[]=null;
+  public products2:ShoppingProduct[]=[];
+  pageActual:number=1;
+  email:string=null;
+  carId:number=null;
+  title:string='Invoice';
 
+  constructor(
+    public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute
+  ) {}
+  
   ngOnInit(): void {
+    this.getProducts();
+    this.loadCustomer();
+  }
+
+  loadCustomer():void{
+    this.routActive.params.subscribe(resp=>{
+       this.email =resp['email'];
+       this.carId=resp['carId']
+
+    })
+  }
+  getProducts():void{
+    this.loadCustomer();
+    this.shoppingCartService.selectPurchase(this.email).subscribe(resp=>{
+      this.products=resp;
+      this.products.forEach(x => {
+        if(x.shoppingCartId==this.carId){
+          this.products2.push(x);
+        }
+      });
+    })
   }
 
 }

@@ -31,6 +31,7 @@ export class DetalleCompraComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarId();
+    this.getProducts();
     this.findAllPayment();
   }
 

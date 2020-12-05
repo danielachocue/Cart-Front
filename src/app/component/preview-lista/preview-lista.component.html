@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="text-center mt-5">
+      {{title}}
+  </h1>
+  <hr>
+  <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center mb-4">
+          <thead class="thead-dark">
+              <tr>
+
+                  <th>#</th>
+                  <th>CarId</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Show</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let carts of shpcars2">
+                  <td>{{i+1}}</td>
+                  <td>{{carts.carId}}</td>
+                  <td>{{carts.items}}</td>
+                  <td>{{carts.total | currency:'COP '}}</td>
+
+                  <td class="text-center "><button class="btn btn-info " [routerLink]="['/recordsPreviewNormal/recordsNormal',email,carts.carId,carts.total]" type="button "><i class="far fa-eye"></i></button></td>
+              </tr>
+          </tbody>
+
+      </table>
+  </div>
+
+
+</div>

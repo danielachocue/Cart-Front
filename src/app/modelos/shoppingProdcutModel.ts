@@ -4,6 +4,9 @@ export class shoppingProductModel{
     shoppingCartId:number;
     quantity:number;
     total:number;
+    name:string;
+    image:string;
+    price:number;
 
 
 }
