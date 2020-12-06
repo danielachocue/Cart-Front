@@ -48,9 +48,8 @@ const routes: Routes = [
 
   {path:'tienda',component:TiendaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   {path:'detalle-compra/:email',component:DetalleCompraComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'lista-compras',component:ListaComprasComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'preview-lista',component:PreviewListaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
-  {path:'preview-lista/lista-compras/:email/:carId',component:PreviewListaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'lista-compras/:email',component:ListaComprasComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
+  {path:'preview-lista/:email',component:PreviewListaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   
   {path: 'login',component:LoginComponent},
   {path: '',component:LoginComponent},

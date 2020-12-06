@@ -56,10 +56,10 @@
           <a href="{{product.image}}" target="_blank"><img [src]="product.image " fallimg="default" class="img-fluid " width="50px" height="50px"> </a>
         </th>
         <th>
-          <button [routerLink]="['/product-edit',product.proId]">Editar</button>
+          <button [routerLink]="['/product-edit',product.proId]"><i class="far fa-edit fa-2x"></i></button>
         </th>
         <th>
-          <button (click)="delete(product.proId)">Borrar</button>
+          <button (click)="delete(product.proId)"><i class="fas fa-trash-alt fa-2x"></i></button>
         </th>
       </tr>
     </table>

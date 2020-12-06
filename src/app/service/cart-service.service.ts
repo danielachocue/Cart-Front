@@ -48,4 +48,8 @@ export class CartServiceService {
     let headers = this.createTokenHeader();
     return this.httpClient.put(this.url + 'finalizarCompra', finalizarCompra, { headers: headers });
   }
+  public historyCart(email:string):Observable<any>{
+    let headers = this.createTokenHeader();
+    return this.httpClient.get(this.url+'historyCart/'+email,{headers:headers});
+  }
 }

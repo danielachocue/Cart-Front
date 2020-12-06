@@ -29,6 +29,7 @@ import { ShoppingCartEditComponent } from './component/shopping-cart-edit/shoppi
 import { ShoppingCartSaveComponent } from './component/shopping-cart-save/shopping-cart-save.component';
 import { DetalleCompraComponent } from './component/detalle-compra/detalle-compra.component';
 import { ListaComprasComponent } from './component/lista-compras/lista-compras.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -55,7 +56,9 @@ import { ListaComprasComponent } from './component/lista-compras/lista-compras.c
     ListaComprasComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     //Firebase Modules

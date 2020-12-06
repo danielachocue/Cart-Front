@@ -45,10 +45,10 @@
             <th>{{paymentMethod.payId}}</th>
             <th>{{paymentMethod.name}}</th>
             <th>
-              <button [routerLink]="['/paymenmethod-edit',paymentMethod.payId]">Editar</button>
+              <button [routerLink]="['/paymenmethod-edit',paymentMethod.payId]"><i class="far fa-edit fa-2x"></i></button>
             </th>
             <th>
-              <button (click)="delete(paymentMethod.payId)">Borrar</button>
+              <button (click)="delete(paymentMethod.payId)"><i class="fas fa-trash-alt fa-2x"></i></button>
             </th>
           </tr>
         </table>

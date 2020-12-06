@@ -1,46 +1,39 @@
-  
-<div class="container">
-  <h1 class="text-center mt-5">
-      {{title}}
-  </h1>
-  <hr>
-  <div class="text-right mb-4">
-  </div>
+<nav>
+    <ul>
+      <li class="item-r">
+        <a routerLink="logout()">Log Out</a>
+      </li>
+       <li class="item-r">
+        <a routerLink="/paymenmethod-list">PaymenMethod List</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/product-list">Product List</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/shopping-cart-list">Shopping Cart</a>
+      </li>
+      <h2>Cart Front</h2>
+    </ul>
+  </nav><br />
 
-  <div class="table-responsive">
-      <table class="table table-bordered table-hover text-center mb-4">
-          <thead class="thead-dark">
-              <tr>
+<div id="container">
 
-                  <th>#</th>
-                  <th>CarId</th>
-                  <th>Name</th>
-                  <th>ProId</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Image</th>
-                  <th>Total</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let product of products2">
-                  <td>{{i+1}}</td>
-                  <td>{{product.shoppingCartId}}</td>
-                  <td>{{product.name}}</td>
-                  <td>{{product.productId}}</td>
-                  <td>{{product.total/product.quantity | currency:'COP '}}</td>
-                  <td>{{product.quantity}}</td>
-                  <td class="text-center">
-                      <a href="{{product.image}}" target="_blank"><img [src]="product.image " fallimg="default" class="img-fluid " width="50px" height="50px"> </a>
-                  </td>
-                  <td>{{product.total | currency:'COP '}}</td>
+    <table>
+        <thead>
+            <th>CarId</th>
+            <th>Email</th>
+            <th>Cantidad</th>
+            <th>PaymenMethod</th>
+            <th>Toltal</th>
+        </thead>
+        <tr class="item" *ngFor="let products of products">
+            <td>{{products.carId}}</td>
+            <td>{{products.customerEmail}}</td>
+            <td>{{products.items}}</td>
+            <td>{{products.paymentMethodId}}</td>
+            <td>{{products.total | currency:'COP '}}</td>
+        </tr>
+    </table>
 
-              </tr>
-          </tbody>
-
-      </table>
-  </div>
-
-
-</div>
+</div> 
 

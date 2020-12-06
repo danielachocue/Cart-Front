@@ -28,6 +28,7 @@
           <th>Email</th>
           <th>Name</th>
           <th>Role</th>
+          <th>Compras</th>
           <th>Editar</th>
           <th>Borrar</th>
         </tr>
@@ -37,10 +38,13 @@
         <th>{{customer.name}}</th>
         <th>{{customer.role}}</th>
         <th>
-          <button [routerLink]="['/customer-edit',customer.email]">Editar</button>
+          <button [routerLink]="['/lista-compras', customer.email]"><i class="fas fa-shopping-cart fa-2x"></i></button>
         </th>
         <th>
-          <button (click)="delete(customer.email)">Borrar</button>
+          <button [routerLink]="['/customer-edit',customer.email]"><i class="fas fa-user-edit fa-2x"></i></button>
+        </th>
+        <th>
+          <button (click)="delete(customer.email)"><i class="fas fa-trash-alt fa-2x"></i></button>
         </th>
       </tr>
     </table>

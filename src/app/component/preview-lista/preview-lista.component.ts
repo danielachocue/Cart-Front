@@ -20,16 +20,20 @@ export class PreviewListaComponent implements OnInit {
   email:string=null;
   public shpcars:ShoppingCart[];
   public shpcars2:ShoppingCart[]=[];
+  
   constructor(public shoppingProductService:ShoppingProductService,
               public shoppingCartService:ShoppingCartService,
               private routActive:ActivatedRoute, public auth: AngularFireAuth,public router:Router) { }
 
   ngOnInit(): void {
+    this.findAll();
     this.clientFirebase = this.auth.user.subscribe((userFirebase) => {
       this.email = userFirebase.email;
     });
-    this.findAll();
 
+  }
+  ngOnDestroy() {
+    this.clientFirebase.unsubscribe()
   }
   
   findAll():void{
