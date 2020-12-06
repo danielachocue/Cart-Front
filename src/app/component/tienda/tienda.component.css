@@ -2,9 +2,12 @@ body{
     font-family: sans-serif;
     margin: 0px;
     padding: 0px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-ul {
+.nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -24,19 +27,33 @@ li a {
     background-color: #0066cc;
 }
 
-ul li{
+.nav li{
     display: inline-block;
 }
 
-ul li a{
+.nav li a{
     color: white;
     text-decoration: none;
     padding: 20px 20px;
     display: block;
 
 }
-ul li a:hover{
+.nav li a:hover{
     background-color:  #00264d;
+}
+
+span{
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.buscar{
+    width: 500px;
+    margin-top: 50px;
+    margin-left: 32%;
+    padding: 5px;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 h3{

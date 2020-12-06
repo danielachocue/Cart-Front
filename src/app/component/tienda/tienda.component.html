@@ -1,13 +1,21 @@
 <nav>
-    <ul>
+    <ul class="nav">
       <li class="item-r"><a href="#">Log Out</a></li>
       <li class="item-r"><a href="#">Pagar Ahora</a></li>
       <li class="item-r"><a [routerLink] ="['/detalle-compra',email]">Detalle Compra</a></li>
-      <li class="item-r"><a ><i class="fas fa-shopping-cart fa-lg"></i></a></li>
+      <li class="item-r"><a ><i class="fas fa-shopping-cart fa-lg"></i>
+        <span>{{totalItems}}</span>
+        
+    </a></li>
       <h2>Cart Front</h2>
     </ul>
   </nav><br />
   <h3>Lista de Productos</h3>
+  <div class="col-11 mt-4">
+    <input class="buscar" type="text" placeholder="Search for Name" [(ngModel)]="name" (keyup.enter)="findByName()">
+    <div class="alert alert-danger" role="alert" *ngIf="productName">
+        No hay productos con el nombre {{name}}
+    </div>
   <div class="row">
             <div  *ngFor="let product of products">
                 <div class="card">
@@ -16,11 +24,14 @@
                         <h4 class="card-title"> <b> {{product.name}}</b></h4>
                         <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
                         <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
-                        <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity">
-                        <div class="">
-                            <button class="btn" (click)="addProduct(product.proId,product.name)" class="card-link"><i class="fas fa-shopping-cart"></i></button>
-                        </div>
+                        <form>
+                            <input type="text" name="quantity" id="quantity" #quantity placeholder="quantity" [(ngModel)]="quantiy" />
+                            <div class="">
+                                <button class="btn" (click)="addProduct(product.proId,product.name)" class="card-link"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </form>
                     </div>
+
         </div>
         </div>
   </div>

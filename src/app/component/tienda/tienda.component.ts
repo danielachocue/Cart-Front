@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddShoppingProduct } from 'src/app/domain/addShoppingProduct';
 import { Email } from 'src/app/domain/email';
@@ -22,12 +22,14 @@ export class TiendaComponent implements OnInit {
   totalItems: number = 0;
   quantity: number = 0;
   carId: number;
+  name:string=''
+  productName:boolean=false;
   public carts: ShoppingCart[];
   public shoppingProduct: AddShoppingProduct;
   public creatCartEmail: Email = new Email(null);
   public clientFirebase: Subscription =new Subscription
 
-  constructor(public productService: ProductService, public shoppingCartService: ShoppingCartService, public auth: AngularFireAuth) { }
+  constructor(public productService: ProductService, public shoppingCartService: ShoppingCartService, public auth: AngularFireAuth, public route: Router) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -37,6 +39,7 @@ export class TiendaComponent implements OnInit {
    })
 
   }
+  
   findAll(): void {
     this.productService.findAll().subscribe(data => {
       this.products = data;
@@ -58,6 +61,7 @@ export class TiendaComponent implements OnInit {
           this.shoppingProduct.quantity = this.quantity;
           this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((respo) => {
             alert("producto agregado");
+            this.route.navigate(['/tienda']);
           })
         }
       });
@@ -137,5 +141,29 @@ export class TiendaComponent implements OnInit {
     })
   }
 
+  findByName():void{
+    this.productService.findAll().subscribe(data=>{
+      this.products=data;
+      this.products=[]
+      let validacion:boolean=false;
+      data.forEach(resp => {
+        if(this.name===resp.name){
+          this.products.push(resp);
+          this.productName=false;
+          validacion=true;
+        }
+        });
+        if(this.name===''){
+          validacion=true;
+          this.findAll();
+          this.productName=false;
+        }
+        if(validacion===false){
+          this.productName=true;
+        }
+      },error=>{
+        console.error(error);
+      })
+  }
 
 }
