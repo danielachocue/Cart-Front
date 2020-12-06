@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/domain/customer';
 import { Enable } from 'src/app/domain/enable';
@@ -26,7 +27,7 @@ export class CustomerEditComponent implements OnInit {
 
   constructor(public router: Router,
     public activedRouter: ActivatedRoute, public customerService: CustomerService,
-    public enableService: EnableService, public roleService:RoleService ) { }
+    public enableService: EnableService, public roleService:RoleService, public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     let params = this.activedRouter.params['_value'];
@@ -67,6 +68,13 @@ export class CustomerEditComponent implements OnInit {
     }, err => {
       alert(err.error.error);
     });
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

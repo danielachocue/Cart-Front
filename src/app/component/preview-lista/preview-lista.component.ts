@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ShoppingCart } from 'src/app/domain/shoppingCart';
 import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
@@ -22,7 +22,7 @@ export class PreviewListaComponent implements OnInit {
   public shpcars2:ShoppingCart[]=[];
   constructor(public shoppingProductService:ShoppingProductService,
               public shoppingCartService:ShoppingCartService,
-              private routActive:ActivatedRoute, public auth: AngularFireAuth) { }
+              private routActive:ActivatedRoute, public auth: AngularFireAuth,public router:Router) { }
 
   ngOnInit(): void {
     this.clientFirebase = this.auth.user.subscribe((userFirebase) => {
@@ -43,6 +43,13 @@ export class PreviewListaComponent implements OnInit {
     },error=>{
       console.error(error);
     })  
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

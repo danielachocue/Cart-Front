@@ -166,4 +166,11 @@ export class TiendaComponent implements OnInit {
       })
   }
 
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.route.navigate(['/login'])
+    
+  }
+
 }

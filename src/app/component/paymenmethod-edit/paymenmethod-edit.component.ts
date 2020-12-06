@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enable } from 'src/app/domain/enable';
 import { PaymentMethod } from 'src/app/domain/payment-method';
@@ -22,7 +23,7 @@ export class PaymenmethodEditComponent implements OnInit {
 
   constructor(public router:Router,
               public activeRouter: ActivatedRoute, public paymenMethodService: PaymenmethodService,
-              public enableService: EnableService) { }
+              public enableService: EnableService,public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     let params=this.activeRouter.params['_value'];
@@ -63,6 +64,13 @@ export class PaymenmethodEditComponent implements OnInit {
       alert(err.error.error);
 
     });
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

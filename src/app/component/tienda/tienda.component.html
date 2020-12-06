@@ -1,6 +1,8 @@
 <nav>
     <ul class="nav">
-      <li class="item-r"><a href="#">Log Out</a></li>
+      <li class="item-r">
+        <a (click)="logout()">Log Out</a>
+      </li>
       <li class="item-r"><a href="#">Pagar Ahora</a></li>
       <li class="item-r"><a [routerLink] ="['/detalle-compra',email]">Detalle Compra</a></li>
       <li class="item-r"><a ><i class="fas fa-shopping-cart fa-lg"></i>

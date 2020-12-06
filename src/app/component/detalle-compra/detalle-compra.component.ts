@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentMethod } from 'src/app/domain/payment-method';
 import { ShoppingCart } from 'src/app/domain/shoppingCart';
@@ -24,7 +25,7 @@ export class DetalleCompraComponent implements OnInit {
   public cartClose:CloseShoppingCart= new CloseShoppingCart(null,null);
 
   constructor(public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute
-              ,public paymentMethodService:PaymenmethodService,public route:Router) { }
+              ,public paymentMethodService:PaymenmethodService,public route:Router,public auth: AngularFireAuth) { }
   carId:number;
   email:string=null;
   pageActual:number=1;
@@ -94,6 +95,12 @@ export class DetalleCompraComponent implements OnInit {
     }
     )
 
+  }
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.route.navigate(['/login'])
+    
   } 
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingProduct } from 'src/app/domain/shoppingProduct';
 import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
 import { ShoppingProductService } from 'src/app/service/shopping-product.service';
@@ -19,7 +20,8 @@ export class ListaComprasComponent implements OnInit {
   title:string='Invoice';
 
   constructor(
-    public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute
+    public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute,
+    public auth: AngularFireAuth, public route:Router
   ) {}
   
   ngOnInit(): void {
@@ -44,6 +46,13 @@ export class ListaComprasComponent implements OnInit {
         }
       });
     })
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.route.navigate(['/login'])
+    
   }
 
 }

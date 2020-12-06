@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/domain/product';
 import { ProductService } from 'src/app/service/product.service';
 
@@ -15,7 +17,7 @@ export class ProductListComponent implements OnInit {
   public showMsg: boolean = false;
   public mensajes: string[] = [""];
 
-  constructor(public productService:ProductService) { }
+  constructor(public productService:ProductService,public auth: AngularFireAuth,public router: Router) { }
 
   ngOnInit(): void {
 
@@ -38,6 +40,13 @@ export class ProductListComponent implements OnInit {
       alert(err.error.error);
 
     });
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

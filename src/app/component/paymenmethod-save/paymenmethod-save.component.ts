@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Enable } from 'src/app/domain/enable';
 import { PaymentMethod } from 'src/app/domain/payment-method';
@@ -20,7 +21,7 @@ export class PaymenmethodSaveComponent implements OnInit {
 
   //Inyeccion de dependencia
   constructor(public router: Router, public paymenMethodService:PaymenmethodService,
-              public enableServide:EnableService) { }
+              public enableServide:EnableService,public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.paymenMethod=new PaymentMethod(null,"","");
@@ -43,6 +44,13 @@ export class PaymenmethodSaveComponent implements OnInit {
       console.log(err);
       alert(err.error.error);
     });
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

@@ -3,6 +3,7 @@ import { Customer } from 'src/app/domain/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-customer-list',
@@ -17,7 +18,7 @@ export class CustomerListComponent implements OnInit {
   public showMsg: boolean = false;
   public mensajes: string[] = [""];
 
-  constructor(public customerService:CustomerService, private router:Router,private authService:AuthService) { }
+  constructor(public customerService:CustomerService, private router:Router,public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -38,9 +39,11 @@ export class CustomerListComponent implements OnInit {
       alert(err.error.error);
     });
   }
-  public salir():void{
-    this.authService.logOut();
-    this.router.navigate(['/login']);
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

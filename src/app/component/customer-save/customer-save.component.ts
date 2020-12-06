@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/domain/customer';
 import { Enable } from 'src/app/domain/enable';
@@ -24,7 +25,7 @@ export class CustomerSaveComponent implements OnInit {
 
   //inyeccion de dependencia
   constructor(public router:Router,public customerService: CustomerService,
-    public enableService: EnableService, public authService: AuthService, public roleService:RoleService) { }
+    public enableService: EnableService, public authService: AuthService, public roleService:RoleService,public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.customer = new Customer("", "", "Y", "", "", "", "A");
@@ -60,5 +61,11 @@ export class CustomerSaveComponent implements OnInit {
         alert(err.error.error);
 
     });
+  }
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 }
