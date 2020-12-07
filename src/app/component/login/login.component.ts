@@ -62,9 +62,7 @@ export class LoginComponent implements OnInit {
               if(userInfo.role ==='A'){
                 this.router.navigate(['/customer-list']);
               }else{
-                this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp=>{
                   this.router.navigate(['/tienda']);
-                })
               }
             }else{
               alert("Usuario inabilitado");
