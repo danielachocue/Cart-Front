@@ -46,4 +46,15 @@ export class ProductService {
     let headers=this.createTokenHeader();
     return this.httClient.delete(this.url+'delete/'+proId, {headers:headers});
   }
+
+  public filterName(name:string):Observable<any>{
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'filterName/'+name,{headers:headers});
+  }
+  public filterPrice(p1:number,p2:number):Observable<any>{
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'filterPrice/'+p1+"/"+p2,{headers:headers});
+  }
 }

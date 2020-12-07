@@ -10,7 +10,7 @@
     <nav>
       <ul>
         <li class="item-r">
-          <a routerLink="logout()">Log Out</a>
+          <a (click)="logout()">Log Out</a>
         </li>
          <li class="item-r">
           <a routerLink="/paymenmethod-list">PaymenMethod List</a>
@@ -50,7 +50,7 @@
           <th>{{shpr.productId}}</th>
           <th>{{shpr.shoppingCartId}}</th>
           <th>{{shpr.quantity}}</th>
-          <th>{{shpr.total}}</th>
+          <th>{{shpr.total | currency:'COP '}}</th>
           <th>
             <button [routerLink]="['/shopping-product-edit',shpr.shprId]"><i class="fas fa-edit fa-2x"></i></button>
           </th>

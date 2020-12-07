@@ -54,9 +54,9 @@
       <tr *ngFor="let product of products">
         <th>{{product.proId}}</th>
         <th>{{product.name}}</th>
-        <th>{{product.price}}</th>
+        <th>{{product.price | currency:'COP '}}</th>
         <th>
-          <a href="{{product.image}}" target="_blank"><img [src]="product.image " fallimg="default" class="img-fluid " width="50px" height="50px"> </a>
+          <a href="{{product.image}}" target="_blank"><img src="{{product.image}}" fallimg="default" class="img-fluid " width="50px" height="50px"> </a>
         </th>
         <th>
           <button [routerLink]="['/product-edit',product.proId]"><i class="far fa-edit fa-2x"></i></button>

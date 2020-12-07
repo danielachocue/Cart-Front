@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Email } from 'src/app/domain/email';
 import { Enable } from 'src/app/domain/enable';
@@ -18,7 +19,8 @@ export class ShoppingCartSaveComponent implements OnInit {
   enables: Enable[]
   public creatCartEmail:Email= new Email(null);
 
-  constructor(private route:Router,private shoppingCartService:ShoppingCartService, private enableService: EnableService) { }
+  constructor(private route:Router,private shoppingCartService:ShoppingCartService,
+              private enableService: EnableService, public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.findAllEnable();
@@ -39,6 +41,13 @@ export class ShoppingCartSaveComponent implements OnInit {
     this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp=>{
       this.route.navigate(['/shoppingCart'])
     })
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.route.navigate(['/login'])
+    
   }
 
 }

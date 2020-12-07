@@ -39,6 +39,7 @@ export class CustomerListComponent implements OnInit {
       alert(err.error.error);
     });
   }
+  
   logout() {
     this.auth.signOut();
     localStorage.clear()

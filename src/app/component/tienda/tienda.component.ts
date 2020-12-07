@@ -20,10 +20,13 @@ export class TiendaComponent implements OnInit {
   public products: Product[];
   email: string;
   totalItems: number = 0;
-  quantity: number = 0;
+  quantity: number = 1;
   carId: number;
   name:string=''
+  to:number=0
+  from:number=0
   productName:boolean=false;
+  productprice:boolean=false;
   public carts: ShoppingCart[];
   public shoppingProduct: AddShoppingProduct;
   public creatCartEmail: Email = new Email(null);
@@ -43,6 +46,9 @@ export class TiendaComponent implements OnInit {
   findAll(): void {
     this.productService.findAll().subscribe(data => {
       this.products = data;
+      this.name=null;
+      this.to=null
+      this.from=null
     }, error => {
       console.error(error);
     })
@@ -62,6 +68,8 @@ export class TiendaComponent implements OnInit {
           this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((respo) => {
             alert("Producto Agregado");
             this.route.navigate(['/tienda']);
+          }, error=>{
+            alert(error.error.error);
           })
         }
       });
@@ -164,6 +172,12 @@ export class TiendaComponent implements OnInit {
       },error=>{
         console.error(error);
       })
+  }
+
+  findByPrice():void{
+    this.productService.filterPrice(this.from,this.to).subscribe(resp=>{
+      this.products=resp;
+    })
   }
 
   logout() {

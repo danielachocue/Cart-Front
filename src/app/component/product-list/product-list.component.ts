@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
     this.productService.findAll().subscribe(data=>{
       this.products=data;
     },error=>{
-      console.error(error);
+      alert(error.error.errors);
     });
   }
   public delete(proId:string): void {

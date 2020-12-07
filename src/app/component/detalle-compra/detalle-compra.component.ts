@@ -29,6 +29,7 @@ export class DetalleCompraComponent implements OnInit {
   carId:number;
   email:string=null;
   pageActual:number=1;
+  totalInvoice:number=0
   title:String="Productos en el Carro de compras"
   title2:String="Metodo de Pago"
 
@@ -65,6 +66,7 @@ export class DetalleCompraComponent implements OnInit {
       this.products.forEach(resp => {
         if(resp.shoppingCartId===this.carId){
           this.products2.push(resp);
+          this.totalInvoice+=resp.total 
         } 
       });
     })

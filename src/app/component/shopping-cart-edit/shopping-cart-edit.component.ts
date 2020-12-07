@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enable } from 'src/app/domain/enable';
 import { shoppingCartModel } from 'src/app/modelos/shoppingCartModelo';
@@ -15,7 +16,8 @@ export class ShoppingCartEditComponent implements OnInit {
   shoppingCart = new shoppingCartModel();
   enables: Enable[];
 
-  constructor(private shoppingCartService: ShoppingCartService, private routActive: ActivatedRoute, private route: Router,private enableService: EnableService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private routActive: ActivatedRoute,
+              private route: Router,private enableService: EnableService, public auth:AngularFireAuth) { }
 
   ngOnInit(): void {
     this.loadshoppingCart();
@@ -46,5 +48,12 @@ export class ShoppingCartEditComponent implements OnInit {
 
   back(): void {
     this.route.navigate(['/shoppingCart'])
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.route.navigate(['/login'])
+    
   }
 }
