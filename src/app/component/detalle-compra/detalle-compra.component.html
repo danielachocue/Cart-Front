@@ -19,6 +19,7 @@
       <h2>Cart Front</h2>
     </ul>
   </nav><br/>
+  <h3>{{title}}</h3>
   <div id="main-container">
     <table id="tabla">
       <thead>
@@ -46,7 +47,7 @@
     </table>
     
   <div class="form-group row">
-        
+    <h3>{{title2}}</h3>
     <form #DetalletForm="ngForm">
         <h2>Product Edit</h2>
         <input class="form-control " type="text" placeholder="Card Number" name="cardNumber" [(ngModel)]="purchase.cardNumber" required minlength="16" maxlength="19" #cardNumber="ngModel">

@@ -9,6 +9,9 @@
   <body>
     <nav>
       <ul>
+        <li class="item-r">
+          <a routerLink="logout()">Log Out</a>
+        </li>
          <li class="item-r">
           <a routerLink="/paymenmethod-list">PaymenMethod List</a>
         </li>
@@ -17,6 +20,9 @@
         </li>
         <li class="item-r">
           <a routerLink="/product-list">Product List</a>
+        </li>
+        <li class="item-r">
+          <a routerLink="/shopping-cart-list">Shopping Cart List</a>
         </li>
         <li class="item-r">
           <a routerLink="/shopping-product-save">Shopping Product Save</a>
@@ -46,10 +52,10 @@
           <th>{{shpr.quantity}}</th>
           <th>{{shpr.total}}</th>
           <th>
-            <button [routerLink]="['/shopping-product-edit',shpr.shprId]">Editar</button>
+            <button [routerLink]="['/shopping-product-edit',shpr.shprId]"><i class="fas fa-edit fa-2x"></i></button>
           </th>
           <th>
-            <button (click)="delete(shpr.proId)">Borrar</button>
+            <button (click)="delete(shpr.proId)"><i class="fas fa-trash-alt fa-2x"></i></button>
           </th>
         </tr>
       </table>

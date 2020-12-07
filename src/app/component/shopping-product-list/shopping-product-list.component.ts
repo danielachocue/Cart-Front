@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { ShoppingProduct } from 'src/app/domain/shoppingProduct';
 import { ShoppingProductService } from 'src/app/service/shopping-product.service';
 
@@ -15,7 +17,7 @@ export class ShoppingProductListComponent implements OnInit {
   shprId:string;
   pageActual:number=1;
 
-  constructor(public shoppingProductService:ShoppingProductService) { }
+  constructor(public shoppingProductService:ShoppingProductService, public router: Router, public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -43,11 +45,17 @@ export class ShoppingProductListComponent implements OnInit {
     this.shoppingProductService.delete(shprId).subscribe(ok => {
       alert("Shopping product eliminado exitosamente");
     }, err => {
-      console.log(err)
-      alert(err.error.error);
+      alert(err.errors.errors);
 
     });
 
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

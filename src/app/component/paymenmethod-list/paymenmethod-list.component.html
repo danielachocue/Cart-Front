@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="paymenmethod-list.component.css">
-    <title>Payment Method Lis</title>
+    <title>Payment Method List</title>
 </head>
 <body>
     <nav>
@@ -21,11 +21,15 @@
           <li class="item-r"><a routerLink="/shopping-product-list">Shopping Product List</a>
           </li> 
           <li class="item-r">
+            <a routerLink="/shopping-cart-list">Shopping Cart List</a>
+          </li>
+          <li class="item-r">
             <a routerLink="/paymenmethod-save">Payment Method Save</a>
           </li> 
           <h2>Cart Front</h2>
         </ul>
       </nav><br />
+      <h3>{{title}}</h3>
       <div *ngIf="showMsg">
         <p *ngFor="let msg of mensajes">
           {{msg}}

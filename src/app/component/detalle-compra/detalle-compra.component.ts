@@ -16,7 +16,7 @@ import { ShoppingProductService } from 'src/app/service/shopping-product.service
   styleUrls: ['./detalle-compra.component.css']
 })
 export class DetalleCompraComponent implements OnInit {
-
+  
   public carts:ShoppingCart[];
   public products:ShoppingProduct[];
   public products2:ShoppingProduct[]=null;
@@ -29,6 +29,8 @@ export class DetalleCompraComponent implements OnInit {
   carId:number;
   email:string=null;
   pageActual:number=1;
+  title:String="Productos en el Carro de compras"
+  title2:String="Metodo de Pago"
 
   ngOnInit(): void {
     this.getCarId();
@@ -91,9 +93,12 @@ export class DetalleCompraComponent implements OnInit {
     this.cartClose.carId=this.carId;
     this.cartClose.payId=this.purchase.cardType;
     this.shoppingCartService.closeShoppingCart(this.cartClose).subscribe((resp)=>{
+      alert("Pago Exitoso")
         this.route.navigate(['/tienda']);
-    }
-    )
+    },error=>{
+      alert("Ingresa bien la infromacion");
+    }) 
+    
 
   }
   logout() {

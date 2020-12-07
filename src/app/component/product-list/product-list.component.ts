@@ -31,13 +31,12 @@ export class ProductListComponent implements OnInit {
       console.error(error);
     });
   }
-  public delete(productId:string): void {
-    this.productService.delete(productId).subscribe(ok => {
+  public delete(proId:string): void {
+    this.productService.delete(proId).subscribe(ok => {
       alert("Producto eliminado exitosamente");
       this.findAll();
     }, err => {
-      console.log(err)
-      alert(err.error.error);
+      console.log(err.error.error);
 
     });
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { ShoppingCart } from 'src/app/domain/shoppingCart';
 import { CloseShoppingCart } from 'src/app/domain/shoppingCartClose';
 import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
@@ -16,7 +18,7 @@ export class ShoppingCartListComponent implements OnInit {
   pageActual: number = 1;
   public cartClose:CloseShoppingCart= new CloseShoppingCart(null,null);
 
-  constructor(public shoppingCartService: ShoppingCartService) { }
+  constructor(public shoppingCartService: ShoppingCartService,public auth: AngularFireAuth,public router: Router) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -69,6 +71,12 @@ export class ShoppingCartListComponent implements OnInit {
     }
     )
 
+  }
+  logout() {
+    this.auth.signOut();
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    
   }
 
 }

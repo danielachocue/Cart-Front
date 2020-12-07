@@ -10,6 +10,12 @@
 <body>
   <nav>
     <ul>
+      <li class="item-r">
+        <a routerLink="logout()">Log Out</a>
+      </li>
+      <li class="item-r">
+        <a routerLink="/product-list">Product List</a>
+      </li>
        <li class="item-r">
         <a routerLink="/paymenmethod-list">PaymenMethod List</a>
       </li>
@@ -37,9 +43,9 @@
             <th>Email</th>
             <th>PayId</th>
             <th>Enable</th>
-            <th>Disabled</th>
-            <th>Borrar</th>
-            <th>Clear</th>
+            <th>Close Cart</th>
+            <th>Eliminar</th>
+            <th>Limpiar</th>
         </tr>
       </thead>
       <tr *ngFor="let shpcar of shpcars">
@@ -50,13 +56,13 @@
         <th>{{shpcar.paymentMethodId}}</th>
         <th>{{shpcar.enable}}</th>
         <th>
-          <button (click)="disabled(shpcar.carId)">Habilitar</button>
+          <button (click)="disabled(shpcar.carId)"><i class="fas fa-store-alt-slash fa-2x"></i></button>
         </th>
         <th>
-          <button (click)="delete(shpcar.carId)">Borrar</button>
+          <button (click)="delete(shpcar.carId)"><i class="fas fa-trash-alt fa-2x"></i></button>
         </th>
         <th>
-          <button (click)="clearCart(shpcar.carId)">Borrar</button>
+          <button (click)="clearCart(shpcar.carId)"><i class="fas fa-broom fa-2x"></i></button>
         </th>
       </tr>
     </table>

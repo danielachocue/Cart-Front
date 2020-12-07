@@ -60,7 +60,7 @@ export class TiendaComponent implements OnInit {
           this.shoppingProduct.proId = proId;
           this.shoppingProduct.quantity = this.quantity;
           this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((respo) => {
-            alert("producto agregado");
+            alert("Producto Agregado");
             this.route.navigate(['/tienda']);
           })
         }
