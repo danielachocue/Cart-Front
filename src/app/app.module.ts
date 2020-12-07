@@ -30,6 +30,7 @@ import { ShoppingCartSaveComponent } from './component/shopping-cart-save/shoppi
 import { DetalleCompraComponent } from './component/detalle-compra/detalle-compra.component';
 import { ListaComprasComponent } from './component/lista-compras/lista-compras.component';
 import { CommonModule } from '@angular/common';
+import { RecuperarcontraComponent } from './component/recuperarcontra/recuperarcontra.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { CommonModule } from '@angular/common';
     ShoppingCartSaveComponent,
     DetalleCompraComponent,
     ListaComprasComponent,
+    RecuperarcontraComponent,
   ],
   imports: [
     CommonModule,

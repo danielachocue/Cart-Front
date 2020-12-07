@@ -25,6 +25,7 @@ import { ShoppingCartEditComponent } from './component/shopping-cart-edit/shoppi
 import { DetalleCompraComponent } from './component/detalle-compra/detalle-compra.component';
 import { ListaComprasComponent } from './component/lista-compras/lista-compras.component';
 import { PreviewListaComponent } from './component/preview-lista/preview-lista.component';
+import { RecuperarcontraComponent } from './component/recuperarcontra/recuperarcontra.component';
 //import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const redirectUnauthorizedToLogin=()=>redirectUnauthorizedTo(['/login']);
@@ -52,6 +53,7 @@ const routes: Routes = [
   {path:'preview-lista/:email',component:PreviewListaComponent, canActivate:[AngularFireAuthGuard],data:{authGuardPipe:redirectUnauthorizedToLogin}},
   
   {path: 'login',component:LoginComponent},
+  {path: 'recuperarcontra',component:RecuperarcontraComponent},
   {path: '',component:LoginComponent},
   { path:'**',pathMatch:'full',redirectTo:'login'}
 ];

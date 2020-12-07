@@ -9,6 +9,7 @@ import { usuariomodel } from 'src/app/modelos/usariomodel';
 import { AuthService } from 'src/app/service/auth.service';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { CustomerService } from 'src/app/service/customer.service';
+import { ShoppingCartService } from 'src/app/service/shopping-cart.service';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +23,10 @@ export class LoginComponent implements OnInit {
   public user: User;
   public userToken: User;
   public customer:Customer;
+  public shoppingCartService:ShoppingCartService;
+  public creatCartEmail:Email= new Email(null);
   //inyecto el auth service
-  constructor(private router: Router, private authService: AuthService, private customerService: CustomerService) { }
+  constructor(private router: Router, private authService: AuthService, private customerService: CustomerService, public auth:AngularFireAuth) { }
   ngOnInit(): void {
     //inicializo user con valores por defecto
     this.user = new User("", "");
@@ -59,7 +62,9 @@ export class LoginComponent implements OnInit {
               if(userInfo.role ==='A'){
                 this.router.navigate(['/customer-list']);
               }else{
-                this.router.navigate(['/tienda']);
+                this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp=>{
+                  this.router.navigate(['/tienda']);
+                })
               }
             }else{
               alert("Usuario inabilitado");
@@ -79,4 +84,8 @@ export class LoginComponent implements OnInit {
     });
 
 }
+sendPasswordResetEmail(email: string) {
+  return this.auth.sendPasswordResetEmail(email);
+}
+
 }
