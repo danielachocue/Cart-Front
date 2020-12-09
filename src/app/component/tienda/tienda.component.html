@@ -27,7 +27,6 @@
                         <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
                         <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
                         <form>
-                            <input type="number" name="quantity" id="quantity" #quantity placeholder="quantity"/>
                             <div class="">
                                 <button class="btn" (click)="addProduct(product.proId,product.name)" class="card-link"><i class="fas fa-shopping-cart fa-2x"></i></button>
                             </div>

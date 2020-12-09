@@ -142,7 +142,9 @@ export class TiendaComponent implements OnInit {
           this.carId = car.carId;
           this.shoppingCartService.clearCart(this.carId).subscribe(data => {
             this.totalItems = 0;
+            alert("Carrito limpio");
           }, error => {
+            alert("Carrito no activo")
           })
         }
       })

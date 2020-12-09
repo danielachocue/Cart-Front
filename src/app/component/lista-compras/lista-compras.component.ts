@@ -18,7 +18,7 @@ export class ListaComprasComponent implements OnInit {
   pageActual:number=1;
   email:string=null;
   carId:number=null;
-  title:string='Invoice';
+  title:string='Lista Compras';
 
   constructor(
     public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute,

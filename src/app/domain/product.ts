@@ -6,6 +6,6 @@ export class Product {
         public enable:string,
         public image:string,
         public name:string,
-        public price:number,
+        public price:number
     ){}
 }

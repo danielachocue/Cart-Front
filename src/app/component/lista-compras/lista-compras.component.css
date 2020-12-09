@@ -65,7 +65,9 @@ p{
 }
 
 #container{
-    margin: 150px auto;
+    margin-top: 150px;
+    margin-left: 630px;
+    margin-right: 250px;
     width: 600px;
 }
 

@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit {
       alert("Producto eliminado exitosamente");
       this.findAll();
     }, err => {
-      console.log(err.error.error);
+      alert(err.error.error);
 
     });
   }

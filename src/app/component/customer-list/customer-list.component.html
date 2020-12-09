@@ -31,6 +31,7 @@
           <th>Email</th>
           <th>Name</th>
           <th>Role</th>
+          <th>Enable</th>
           <th>Compras</th>
           <th>Editar</th>
           <th>Borrar</th>
@@ -40,6 +41,7 @@
         <th>{{customer.email}}</th>
         <th>{{customer.name}}</th>
         <th>{{customer.role}}</th>
+        <th>{{customer.enable}}</th>
         <th>
           <button [routerLink]="['/lista-compras', customer.email]"><i class="fas fa-shopping-cart fa-2x"></i></button>
         </th>

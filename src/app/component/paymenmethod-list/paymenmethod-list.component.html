@@ -41,6 +41,7 @@
             <tr>
                 <th>PayId</th>
                 <th>Name</th>
+                <th>Enable</th>
                 <th>Editar</th>
                 <th>Borrar</th>
             </tr>
@@ -48,6 +49,7 @@
           <tr *ngFor="let paymentMethod of paymentMethods">
             <th>{{paymentMethod.payId}}</th>
             <th>{{paymentMethod.name}}</th>
+            <th>{{paymentMethod.enable}}</th>
             <th>
               <button [routerLink]="['/paymenmethod-edit',paymentMethod.payId]"><i class="far fa-edit fa-2x"></i></button>
             </th>
